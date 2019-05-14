@@ -27,3 +27,6 @@
 /config/master.key
 
 .env
+
+# Ignore VSCode config
+.vscode/*
