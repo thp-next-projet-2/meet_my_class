@@ -1,0 +1,11 @@
+{
+  "name": "meet_my_class",
+  "private": true,
+  "dependencies": {},
+  "husky": {
+    "hooks": {
+      "pre-commit": "rubocop",
+      "pre-push": "rspec"
+    }
+  }
+}

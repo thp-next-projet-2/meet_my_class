@@ -1,0 +1,62 @@
+version: 2
+orbs:
+  codecov: codecov/codecov@1.0.4
+jobs:
+  build:
+    docker:
+      - image: circleci/ruby:2.6.2-node-browsers-legacy
+        environment:
+          RAILS_ENV: test
+          PGHOST: 127.0.0.1
+          POSTGRES_USER: circleci_user
+          POSTGRES_PASSWORD: password
+          POSTGRES_PORT: 5432
+
+      - image: circleci/postgres:10-alpine-postgis
+        environment:
+          POSTGRES_USER: circleci_user
+          POSTGRES_PASSWORD: password
+          POSTGRES_DB: meet_my_class_circleci_db
+
+    steps:
+      - checkout
+
+      # Which version of bundler?
+      - run:
+          name: update bundler version
+          command: gem install bundler:2.0.1
+
+      - run:
+          name: Which bundler?
+          command: bundle -v
+
+      - restore_cache:
+          keys:
+          - v1-dependencies-{{ checksum "Gemfile.lock" }}
+          - v1-dependencies-
+
+      - run:
+          name: install dependencies
+          command: bundle check || bundle install
+
+      - save_cache:
+          paths:
+            - ./vendor/bundle
+          key: v1-dependencies-{{ checksum "Gemfile.lock" }}
+
+      - run:
+          name: Wait for DB
+          command: dockerize -wait tcp://localhost:5432 -timeout 1m
+
+      - run: bundle exec rails db:create db:migrate
+
+      - run:
+          name: run linting
+          command: |
+            bundle exec rubocop
+      - run:
+          name: run tests
+          command: |
+            bundle exec rspec --format progress \
+      - store_artifacts:
+          path: coverage
