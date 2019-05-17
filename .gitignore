@@ -30,3 +30,4 @@
 
 # Ignore VSCode config
 .vscode/*
+.idea
