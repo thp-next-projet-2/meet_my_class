@@ -20,4 +20,11 @@
 
 class Klasse < ApplicationRecord
   belongs_to :teacher
+
+  has_many :participations, dependent: :drestroy
+  has_many :students, through: :participations
+
+  has_many :progressions, dependent: :destroy
+  has_many :students,through: :progressions
+
 end

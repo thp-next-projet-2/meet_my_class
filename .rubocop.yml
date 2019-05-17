@@ -1,4 +1,5 @@
 require: rubocop-rspec
+require: rubocop-perfomance
 
 inherit_from:
   - http://relaxed.ruby.style/rubocop.yml
