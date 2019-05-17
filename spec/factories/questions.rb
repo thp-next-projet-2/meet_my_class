@@ -1,27 +1,27 @@
 # == Schema Information
 #
-# Table name: klasses
+# Table name: questions
 #
 #  id          :bigint           not null, primary key
 #  description :text
-#  title       :string
+#  text        :string
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
-#  teacher_id  :bigint
+#  student_id  :bigint
 #
 # Indexes
 #
-#  index_klasses_on_teacher_id  (teacher_id)
+#  index_questions_on_student_id  (student_id)
 #
 # Foreign Keys
 #
-#  fk_rails_...  (teacher_id => teachers.id)
+#  fk_rails_...  (student_id => students.id)
 #
 
 FactoryBot.define do
-  factory :klass, class: 'Klasse' do
-    teacher { nil }
-    title { "MyString" }
+  factory :question do
+    student { nil }
+    text { "MyString" }
     description { "MyText" }
   end
 end
