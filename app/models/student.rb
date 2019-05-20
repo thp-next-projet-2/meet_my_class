@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # == Schema Information
 #
 # Table name: students
@@ -22,15 +24,4 @@ class Student < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
-
-  has_many :participations, dependent: :drestroy
-  has_many :klasses, through: :participations
-
-  has_many :progressions, dependent: :destroy
-  has_many :steps,through: :progressions
-
-  has_many :questions
-
-  has_many :upvotes
-
 end

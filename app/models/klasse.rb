@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # == Schema Information
 #
 # Table name: klasses
@@ -20,11 +22,4 @@
 
 class Klasse < ApplicationRecord
   belongs_to :teacher
-
-  has_many :participations, dependent: :drestroy
-  has_many :students, through: :participations
-
-  has_many :progressions, dependent: :destroy
-  has_many :students,through: :progressions
-
 end

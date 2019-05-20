@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # == Schema Information
 #
 # Table name: steps
@@ -18,9 +20,5 @@
 #
 
 class Step < ApplicationRecord
-  belongs_to :klass
-
-  has_many :progressions, dependent: :destroy
-  has_many :students,through: :progressions
-
+  belongs_to :klasse
 end
