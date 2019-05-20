@@ -18,7 +18,6 @@
 #  index_attendances_on_student_id  (student_id)
 #
 
-
 FactoryBot.define do
   factory :attendance do
     invited_at { "2019-05-19 18:23:16" }

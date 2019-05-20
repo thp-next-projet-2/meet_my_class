@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 FactoryBot.define do
-  factory :step do
-    name { "MyString" }
+  factory :progression do
+    completed { false }
   end
 end

@@ -11,7 +11,6 @@
 #  updated_at  :datetime         not null
 #
 
-
 require 'rails_helper'
 
 RSpec.describe Klass, type: :model do

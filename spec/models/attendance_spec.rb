@@ -18,7 +18,6 @@
 #  index_attendances_on_student_id  (student_id)
 #
 
-
 require 'rails_helper'
 
 RSpec.describe Attendance, type: :model do

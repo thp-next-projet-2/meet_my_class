@@ -19,7 +19,6 @@
 #  index_students_on_reset_password_token  (reset_password_token) UNIQUE
 #
 
-
 FactoryBot.define do
   factory :student do
   end

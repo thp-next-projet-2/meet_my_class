@@ -11,9 +11,8 @@
 #  updated_at  :datetime         not null
 #
 
-
 class Klass < ApplicationRecord
-  has_many :attendances
+  has_many :attendances, dependent: :destroy
   has_many :students, through: :attendances
-  has_many :steps
+  has_many :steps, dependent: :destroy
 end

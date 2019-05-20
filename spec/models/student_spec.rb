@@ -19,7 +19,6 @@
 #  index_students_on_reset_password_token  (reset_password_token) UNIQUE
 #
 
-
 require 'rails_helper'
 
 RSpec.describe Student, type: :model do

@@ -18,7 +18,6 @@
 #  index_attendances_on_student_id  (student_id)
 #
 
-
 class Attendance < ApplicationRecord
   belongs_to :student
   belongs_to :klass
