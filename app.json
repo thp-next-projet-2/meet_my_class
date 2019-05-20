@@ -1,0 +1,20 @@
+{
+  "addons": [
+    "heroku-postgresql",
+    "sentry"
+  ],
+  "buildpacks": [
+
+  ],
+  "env": {
+    "SENTRY_DSN": {
+      "required": true
+    }
+  },
+  "formation": {
+  },
+  "name": "meet_my_class",
+  "scripts": {
+  },
+  "stack": "heroku-18"
+}
