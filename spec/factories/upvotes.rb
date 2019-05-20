@@ -10,7 +10,6 @@
 #  updated_at :datetime         not null
 #
 
-
 FactoryBot.define do
   factory :upvote do
     upvote { false }

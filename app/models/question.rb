@@ -10,7 +10,6 @@
 #  updated_at  :datetime         not null
 #
 
-
 class Question < ApplicationRecord
   belongs_to :student
   has_many :upvotes, dependent: :destroy

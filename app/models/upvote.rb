@@ -10,6 +10,5 @@
 #  updated_at :datetime         not null
 #
 
-
 class Upvote < ApplicationRecord
 end
