@@ -1,0 +1,45 @@
+<div class="container">
+  <div class="jumbotron">
+    <h1><%= @klass.title %></h1>
+    <h4 class="text-muted"><%= @klass.description %></h4>
+  </div>
+  <h2>Étudiants</h2>
+  <p>Nombre: <%= @klass.attendances.count %></p>
+  <table class="table col-md-6">
+    <tbody>
+      <% @klass.attendances.each do |att| %>
+      <tr>
+        <td>
+          <%= att.student.email %>
+        </td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+  <h2>Autres</h2>
+  <p>Nombre: <%= @not_klass.count %></p>
+  <table class="table col-md-6">
+    <tbody>
+      <% @not_klass.each do |student| %>
+      <tr>
+        <td>
+          <%= student.email %>
+        </td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+  <h2>Non confirmés</h2>
+  <p>Nombre: <%= @not_confirmed.count %></p>
+  <table class="table col-md-6">
+    <tbody>
+      <% @not_confirmed.each do |student| %>
+      <tr>
+        <td>
+          <%= student.email %>
+        </td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

@@ -1,0 +1,2 @@
+module Klasses::AttendancesHelper
+end
