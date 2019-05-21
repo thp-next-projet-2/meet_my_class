@@ -55,8 +55,13 @@
     </div>
   </div>
     <h2>Nouveau</h2>
-    <%= simple_form_for new_student_registration_path do |f| %>
-    <%= f.input_field :email, required: true, autofocus: true, placeholder: "email" %>
+    <%# simple_form_for @student_new, url: student_registration_path do |f| %>
+    <%= simple_form_for @student_new, url: klass_students_path(@klass.id), action: 'create' do |f| %>
+    <%= f.input_field :email,
+                      required: true,
+                      autofocus: true,
+                      placeholder: "email" %>
+    <%= hidden_field_tag :klass_id, params["id"] %>
     <%= f.submit "Inviter" %>
     <% end %>
 </div>
