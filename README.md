@@ -1,24 +1,41 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## App specifications
 
-Things you may want to cover:
+* Ruby version : 2.6.2
 
-* Ruby version
+* Rails version : 5.2.3
 
-* System dependencies
+* Test framework : rspec
 
-* Configuration
 
-* Database creation
 
-* Database initialization
+## Cloning the repository
 
-* How to run the test suite
+* Clone the repository
 
-* Services (job queues, cache servers, search engines, etc.)
+* Husky :
+  * cd in the directory and run `npm install`
 
-* Deployment instructions
+* Bundle
+  * run `bundle install`
 
-* ...
+* Docker :
+  * check that Docker is properly installed with the command `docker run hello-world`
+  * check that docker-compose is properly installed with the command `docker-compose --version`
+  * check that you can build the dependencies with the command `docker-compose up redis postgres maildev` or just `docker-compose up`
+  * open another terminal window and check that your services are up with the command `docker-compose ps`
+
+* Launch the app :
+  * setup the database with `rails db:create db:migrate db:seed`
+  * Launch local server with `rails server`
+
+* Team project :
+
+![](https://media0.giphy.com/media/2zeji2UedvZzvIZ45N/giphy.gif?cid=3640f6095c4a8a4d6b6958366767066f)
+
+  * Cyril Avronsart, [cyril_A](https://github.com/belette06)
+  * Nicolas Zwiller, [NIcoZF](NIcoZF)
+  * Vincent Leparoux, [Vincelep](https://github.com/Vincelep)
+  * Olivier Cardinaux, [ocardinaux](https://github.com/ocardinaux)
+  * Guillaume Mulezi, [TheMindset](https://github.com/TheMindset)
