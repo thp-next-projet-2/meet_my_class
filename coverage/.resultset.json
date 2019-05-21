@@ -1,7 +1,11 @@
 {
   "RSpec": {
     "coverage": {
+<<<<<<< HEAD
       "/home/nico/THP_next/meet_my_class/app/models/attendance.rb": [
+=======
+      "/home/gui-pc/Desktop/THP_Next/Projet_2/meet_my_class/app/models/attendance.rb": [
+>>>>>>> 6151f093d72c5dbdb7a9eaa71553b74d69e53979
         null,
         null,
         null,
@@ -27,7 +31,11 @@
         1,
         null
       ],
+<<<<<<< HEAD
       "/home/nico/THP_next/meet_my_class/app/models/klass.rb": [
+=======
+      "/home/gui-pc/Desktop/THP_Next/Projet_2/meet_my_class/app/models/klass.rb": [
+>>>>>>> 6151f093d72c5dbdb7a9eaa71553b74d69e53979
         null,
         null,
         null,
@@ -57,7 +65,11 @@
         1,
         null
       ],
+<<<<<<< HEAD
       "/home/nico/THP_next/meet_my_class/app/models/progression.rb": [
+=======
+      "/home/gui-pc/Desktop/THP_Next/Projet_2/meet_my_class/app/models/progression.rb": [
+>>>>>>> 6151f093d72c5dbdb7a9eaa71553b74d69e53979
         null,
         null,
         null,
@@ -80,7 +92,11 @@
         1,
         null
       ],
+<<<<<<< HEAD
       "/home/nico/THP_next/meet_my_class/app/models/question.rb": [
+=======
+      "/home/gui-pc/Desktop/THP_Next/Projet_2/meet_my_class/app/models/question.rb": [
+>>>>>>> 6151f093d72c5dbdb7a9eaa71553b74d69e53979
         null,
         null,
         null,
@@ -99,7 +115,11 @@
         1,
         null
       ],
+<<<<<<< HEAD
       "/home/nico/THP_next/meet_my_class/app/models/step.rb": [
+=======
+      "/home/gui-pc/Desktop/THP_Next/Projet_2/meet_my_class/app/models/step.rb": [
+>>>>>>> 6151f093d72c5dbdb7a9eaa71553b74d69e53979
         null,
         null,
         null,
@@ -126,7 +146,11 @@
         1,
         null
       ],
+<<<<<<< HEAD
       "/home/nico/THP_next/meet_my_class/app/models/upvote.rb": [
+=======
+      "/home/gui-pc/Desktop/THP_Next/Projet_2/meet_my_class/app/models/upvote.rb": [
+>>>>>>> 6151f093d72c5dbdb7a9eaa71553b74d69e53979
         null,
         null,
         null,
@@ -143,6 +167,10 @@
         null
       ]
     },
+<<<<<<< HEAD
     "timestamp": 1558386421
+=======
+    "timestamp": 1558422195
+>>>>>>> 6151f093d72c5dbdb7a9eaa71553b74d69e53979
   }
 }
