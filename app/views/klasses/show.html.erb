@@ -1,0 +1,62 @@
+<div class="container">
+  <div class="jumbotron">
+    <h1><%= @klass.title %></h1>
+    <h4 class="text-muted"><%= @klass.description %></h4>
+  </div>
+  <div class="container d-flex flex-wrap justify-content-between">
+    <div class="flex-item col-6">
+      <h2>Étudiants</h2>
+      <p>Nombre: <%= @klass.attendances.count %></p>
+      <table class="table col-md-6">
+        <tbody>
+          <% @klass.attendances.each do |att| %>
+          <tr>
+            <td>
+              <%= att.student.email %>
+            </td>
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+    <div class="flex-item flex-grow-1">
+      <div class="d-flex justify-content-between flex-wrap">
+        <div class="flex-item">
+          <h2 class="text-muted">Autres</h2>
+          <p>Nombre: <%= @not_klass.count %></p>
+          <table class="table col-md-6">
+            <tbody>
+              <% @not_klass.each do |student| %>
+              <tr>
+                <td>
+                  <%= student.email %>
+                </td>
+              </tr>
+              <% end %>
+            </tbody>
+          </table>
+        </div>
+        <div class="flex-item">
+          <h2 class="text-muted">Non confirmés</h2>
+          <p>Nombre: <%= @not_confirmed.count %></p>
+          <table class="table col-md-6">
+            <tbody>
+              <% @not_confirmed.each do |student| %>
+              <tr>
+                <td>
+                  <%= student.email %>
+                </td>
+              </tr>
+              <% end %>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+    <h2>Nouveau</h2>
+    <%= simple_form_for new_student_registration_path do |f| %>
+    <%= f.input_field :email, required: true, autofocus: true, placeholder: "email" %>
+    <%= f.submit "Inviter" %>
+    <% end %>
+</div>
