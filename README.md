@@ -30,7 +30,7 @@
   * setup the database with `rails db:create db:migrate db:seed`
   * Launch local server with `rails server`
 
-* Team project :
+## Team project :
 
 ![](https://media0.giphy.com/media/2zeji2UedvZzvIZ45N/giphy.gif?cid=3640f6095c4a8a4d6b6958366767066f)
 
