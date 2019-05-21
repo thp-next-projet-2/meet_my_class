@@ -60,3 +60,12 @@ jobs:
             bundle exec rspec --format progress \
       - store_artifacts:
           path: coverage
+          
+      - run:
+          name: start server for Integration tests
+          command: |
+            bundle exec rails db:reset && bundle exec rails db:seed && bundle exec rails s -p 3000 -d && yarn run wait-on http://localhost:3000
+      - run:
+          name: run integration tests
+          command: |
+            npx cypress run
