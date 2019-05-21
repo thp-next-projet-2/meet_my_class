@@ -33,7 +33,7 @@ jobs:
        # Download and cache dependencies
       - restore_cache:
           keys:
-          - v1-dependencies-r-{{ checksum "Gemfile.lock" }}-y-{{ checksum "yarn.lock" }}
+          - v1-dependencies-r-{{ checksum "Gemfile.lock" }}
           # fallback to using the latest cache if no exact match is found
           - v1-dependencies-
 
@@ -50,7 +50,7 @@ jobs:
           paths:
             - ./vendor/bundle
             - ~/.cache
-          key: v1-dependencies-r-{{ checksum "Gemfile.lock" }}-y-{{ checksum "yarn.lock" }}
+          key: v1-dependencies-r-{{ checksum "Gemfile.lock" }}
         
       # Database setup
       - run:
@@ -78,3 +78,16 @@ jobs:
           name: run integration tests
           command: |
             npx cypress run
+            
+      # collect reports
+      - store_test_results:
+          path: /tmp/test-results
+      - store_artifacts:
+          path: /tmp/test-results
+          destination: test-results
+      - store_artifacts:
+          path: ~/app/coverage
+          destination: coverage-results
+      - store_artifacts:
+          path: ~/app/cypress/videos
+          destination: coverage-results
