@@ -30,20 +30,29 @@ jobs:
           name: Which bundler?
           command: bundle -v
 
+       # Download and cache dependencies
       - restore_cache:
           keys:
-          - v1-dependencies-{{ checksum "Gemfile.lock" }}
+          - v1-dependencies-r-{{ checksum "Gemfile.lock" }}-y-{{ checksum "yarn.lock" }}
+          # fallback to using the latest cache if no exact match is found
           - v1-dependencies-
 
       - run:
           name: install dependencies
           command: bundle check || bundle install
 
+      - run:
+          name: install dependencies
+          command: |
+            yarn install --frozen-lockfile
+
       - save_cache:
           paths:
             - ./vendor/bundle
-          key: v1-dependencies-{{ checksum "Gemfile.lock" }}
-
+            - ~/.cache
+          key: v1-dependencies-r-{{ checksum "Gemfile.lock" }}-y-{{ checksum "yarn.lock" }}
+        
+      # Database setup
       - run:
           name: Wait for DB
           command: dockerize -wait tcp://localhost:5432 -timeout 1m
@@ -60,7 +69,7 @@ jobs:
             bundle exec rspec --format progress \
       - store_artifacts:
           path: coverage
-          
+
       - run:
           name: start server for Integration tests
           command: |
