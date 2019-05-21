@@ -1,12 +1,6 @@
 <div class="container">
 <h1>Students</h1>
 
-<ul>
-<% @students.each do |student| %>
-  <li><%= student.email %></li>
-<% end %>
-</ul>
-
 <%= simple_form_for @student_new do |f| %>
   <%= f.text_field :email, required: true, autofocus: true, placeholder: "email" %>
   <%= f.submit "Inviter" %>
