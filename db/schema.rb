@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_05_20_125748) do
+ActiveRecord::Schema.define(version: 2019_05_21_163403) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -49,6 +49,11 @@ ActiveRecord::Schema.define(version: 2019_05_20_125748) do
     t.text "description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "questionable_type"
+    t.bigint "questionable_id"
+    t.bigint "student_id"
+    t.index ["questionable_type", "questionable_id"], name: "index_questions_on_questionable_type_and_questionable_id"
+    t.index ["student_id"], name: "index_questions_on_student_id"
   end
 
   create_table "steps", force: :cascade do |t|
@@ -90,4 +95,5 @@ ActiveRecord::Schema.define(version: 2019_05_20_125748) do
   end
 
   add_foreign_key "klasses", "teachers"
+  add_foreign_key "questions", "students"
 end
