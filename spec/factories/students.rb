@@ -21,5 +21,7 @@
 
 FactoryBot.define do
   factory :student do
+    email { "thp@yopmail.fr" }
+    password { "password" }
   end
 end

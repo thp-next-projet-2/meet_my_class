@@ -22,4 +22,5 @@
 require 'rails_helper'
 
 RSpec.describe Student, type: :model do
+    it { expect(FactoryBot.create(:student)).to have_many(:attendances) }
 end
