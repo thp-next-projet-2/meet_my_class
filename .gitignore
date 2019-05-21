@@ -28,5 +28,7 @@
 
 .env
 
+coverage/*
+
 # Ignore VSCode config
 .vscode/*
