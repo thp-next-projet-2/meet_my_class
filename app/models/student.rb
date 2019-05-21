@@ -30,4 +30,7 @@ class Student < ApplicationRecord
 
   has_many :progressions, dependent: :destroy
   has_many :steps, through: :progressions
+
+  has_many :questions, dependent: :destroy
+  has_many :upvotes, dependent: :destroy
 end
