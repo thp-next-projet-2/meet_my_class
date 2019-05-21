@@ -41,6 +41,8 @@ class Student < ApplicationRecord
   has_many :progressions, dependent: :destroy
   has_many :steps, through: :progressions
 
+  validates :email, presence: true, uniqueness: { case_sensitive: false }
+
   protected
 
   # SEE: https://github.com/plataformatec/devise/wiki/How-To:-Email-only-sign-up

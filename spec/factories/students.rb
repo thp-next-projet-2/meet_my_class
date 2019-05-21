@@ -30,5 +30,25 @@
 
 FactoryBot.define do
   factory :student do
+    email { Faker::Internet.unique.email }
+    after(:create) do |student|
+      klass = create(:klass)
+
+      create_list(:attendance, Random.rand(1..5), student: student, klass: klass)
+    end
+
+    trait :waiting_confirmation do
+      password { "" }
+      confirmation_sent_at { Faker::Date.backward(14) }
+      confirmation_token { Faker::Internet.password(20) }
+      confirmed_at { nil }
+    end
+
+    trait :confirmed do
+      password { Faker::Internet.password(8, 16) }
+      confirmation_sent_at { Faker::Date.between(14.days.ago, 3.days.ago) }
+      confirmation_token { Faker::Internet.password(20) }
+      confirmed_at { Faker::Date.between(2.days.ago, Time.zone.today) }
+    end
   end
 end

@@ -31,5 +31,22 @@
 require 'rails_helper'
 
 RSpec.describe Student, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  subject do
+    create(:student)
+  end
+
+  it "has a valid factory" do
+    expect(create(:student)).to be_valid
+    expect(create(:student, :confirmed)).to be_valid
+    expect(create(:student, :waiting_confirmation)).to be_valid
+  end
+
+  describe 'Validations' do
+    it { is_expected.to validate_presence_of(:email) }
+    it { is_expected.to validate_uniqueness_of(:email).case_insensitive }
+  end
+
+  it "follows the klasses link" do
+    expect(subject.klasses.first.students).to include(subject)
+  end
 end

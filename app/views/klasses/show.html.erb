@@ -9,10 +9,10 @@
       <p>Nombre: <%= @klass.attendances.count %></p>
       <table class="table col-md-6">
         <tbody>
-          <% @klass.attendances.each do |att| %>
+          <% @klass.students.order(:email).each do |student| %>
           <tr>
             <td>
-              <%= att.student.email %>
+              <%= student.email %>
             </td>
           </tr>
           <% end %>
