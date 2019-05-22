@@ -25,12 +25,25 @@ jobs:
     steps:
       - checkout
 
-      # Download and cache dependencies
+       # Download and cache dependencies
       - restore_cache:
           keys:
           - v1-dependencies-r-{{ checksum "Gemfile.lock" }}-y-{{ checksum "yarn.lock" }}
           # fallback to using the latest cache if no exact match is found
           - v1-dependencies-
+
+      # Which version of bundler?
+      - run:
+          name: update bundler version
+          command: gem install bundler:2.0.1
+
+      - run:
+          name: Which bundler?
+          command: bundle -v
+
+      - run:
+          name: install dependencies
+          command: bundle check || bundle install --jobs=4 --retry=3 --path vendor/bundle
 
       - run:
           name: install libs
