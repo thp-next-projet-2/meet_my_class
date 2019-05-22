@@ -72,6 +72,7 @@ jobs:
                             --format RspecJunitFormatter \
                             --out /tmp/test-results/rspec.xml \
                             --format progress
+                            
       - run:
           name: start server for Integration tests
           command: |
