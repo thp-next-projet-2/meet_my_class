@@ -24,7 +24,7 @@
           <% @not_klass.each do |student| %>
           <tr>
             <td>
-              <%= student.email %>
+              <%= link_to student.email, new_klass_attendance_path(@klass.id) %>
             </td>
           </tr>
           <% end %>

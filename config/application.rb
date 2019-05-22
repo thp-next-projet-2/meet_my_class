@@ -32,8 +32,4 @@ module MeetMyClass
     # Don't generate system test files.
     config.generators.system_tests = nil
   end
-
-  Raven.configure do |config|
-    config.dsn =  ENV['SENTRY_DSN']
-  end
 end
