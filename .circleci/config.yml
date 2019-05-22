@@ -76,7 +76,7 @@ jobs:
             COVERAGE=true bundle exec rspec --format progress \
                             --format RspecJunitFormatter \
                             --out /tmp/test-results/rspec.xml \
-    rspec_junit_formatter                        --format progress
+                            --format progress
       - run:
           name: start server for Integration tests
           command: |
