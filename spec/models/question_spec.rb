@@ -25,5 +25,5 @@
 require 'rails_helper'
 
 RSpec.describe Question, type: :model do
-  it { should belong_to(:student) }
+  it { is_expected.to belong_to(:student) }
 end
