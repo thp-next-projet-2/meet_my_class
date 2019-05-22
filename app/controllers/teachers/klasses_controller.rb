@@ -1,7 +1,8 @@
 # frozen_string_literal: true
 
-class Teachers::KlassesController < ApplicationController
+class Teachers::KlassesController < ApplicationController # rubocop:disable Style/ClassAndModuleChildren
   def index; end
+
   def show
     # Students in klass
     @klass = Klass.includes(:students).find(params[:id])
