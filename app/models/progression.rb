@@ -18,4 +18,6 @@
 #
 
 class Progression < ApplicationRecord
+  belongs_to :step
+  belongs_to :student
 end
