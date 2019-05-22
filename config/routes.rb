@@ -7,7 +7,10 @@ Rails.application.routes.draw do
   #  get 'students/create'
   # end
   devise_for :teachers
-
+  resources :teachers, only: %i[index show]
+  namespace :teachers do
+    resources :klasses
+  end
   # SEE: https://github.com/plataformatec/devise/wiki/How-To:-Email-only-sign-up
   devise_for :students, controllers: {
     confirmations: 'students/confirmations',
@@ -22,6 +25,6 @@ Rails.application.routes.draw do
   end
   resources :students, only: %i[show edit update destroy]
 
-  root 'klasses#index'
+  root 'teachers#index'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
