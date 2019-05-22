@@ -23,6 +23,10 @@
 require 'rails_helper'
 
 RSpec.describe Klass, type: :model do
+  it "has a valid factory" do
+    expect(build(:klass)).to be_valid
+  end
+
   it { is_expected.to belong_to(:teacher) }
   it { is_expected.to have_many(:steps) }
   it { is_expected.to have_many(:questions) }

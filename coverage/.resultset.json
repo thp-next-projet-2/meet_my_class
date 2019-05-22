@@ -51,7 +51,6 @@
         null,
         null,
         1,
-        null,
         1,
         1,
         null,
@@ -139,7 +138,6 @@
         null,
         null,
         1,
-        null,
         1,
         null,
         1,
@@ -148,7 +146,6 @@
         1,
         null,
         1,
-        null,
         null
       ],
       "/home/nico/THP_next/meet_my_class/app/models/upvote.rb": [
@@ -182,6 +179,6 @@
         null
       ]
     },
-    "timestamp": 1558514003
+    "timestamp": 1558529102
   }
 }

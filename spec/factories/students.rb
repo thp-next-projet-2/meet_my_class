@@ -21,7 +21,7 @@
 
 FactoryBot.define do
   factory :student do
-    email { "thp@yopmail.fr" }
-    password { "password" }
+    email { Faker::Internet.unique.safe_email }
+    password { Faker::Internet.password }
   end
 end

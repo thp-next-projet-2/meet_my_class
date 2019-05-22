@@ -21,6 +21,20 @@
 require 'rails_helper'
 
 RSpec.describe Attendance, type: :model do
-  it { is_expected.to belong_to(:student) }
-  it { is_expected.to belong_to(:klass) }
+  before do
+  end
+
+  it "has a valid factory" do
+    #  expect(build(:attendance)).to be_valid
+  end
+
+  context "when associations work" do
+    describe "student" do
+      it { is_expected.to belong_to(:student) }
+    end
+
+    describe "klass" do
+      it { is_expected.to belong_to(:klass) }
+    end
+  end
 end

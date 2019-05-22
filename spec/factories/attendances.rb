@@ -22,5 +22,7 @@ FactoryBot.define do
   factory :attendance do
     invited_at { "2019-05-19 18:23:16" }
     connected_at { "2019-05-19 18:23:16" }
+    klass_id { rand(1..8).to_i }
+    student_id { rand(1..8).to_i }
   end
 end
