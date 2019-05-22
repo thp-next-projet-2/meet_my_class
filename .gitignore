@@ -28,6 +28,13 @@
 
 .env
 
+coverage/*
+
 # Ignore VSCode config
 .vscode/*
+<<<<<<< HEAD
 .idea
+=======
+
+/coverage
+>>>>>>> origin/student_signup
