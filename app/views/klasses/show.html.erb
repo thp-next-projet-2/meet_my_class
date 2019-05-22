@@ -2,6 +2,7 @@
   <div class="jumbotron">
     <h1><%= @klass.title %></h1>
     <h4 class="text-muted"><%= @klass.description %></h4>
+    <h6 class="text-muted"><%= @klass.teacher.email %></h6>
   </div>
   <div class="container d-flex flex-wrap justify-content-between">
     <div class="flex-item col-6">
@@ -11,7 +12,8 @@
         <tbody>
           <% @klass.students.order(:email).each do |student| %>
           <tr>
-            <td>
+            <!-- "css_confirmed" defined in students_helper -->
+            <td class="<%= css_confirmed(student) %>">
               <%= student.email %>
             </td>
           </tr>
