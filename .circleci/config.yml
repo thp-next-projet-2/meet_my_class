@@ -57,7 +57,6 @@ jobs:
             - ~/.cache
           key: v1-dependencies-r-{{ checksum "Gemfile.lock" }}-y-{{ checksum "yarn.lock" }}
         
-
       - run:
           name: Wait for DB
           command: dockerize -wait tcp://localhost:5432 -timeout 1m
@@ -77,7 +76,7 @@ jobs:
             COVERAGE=true bundle exec rspec --format progress \
                             --format RspecJunitFormatter \
                             --out /tmp/test-results/rspec.xml \
-                            --format progress
+    rspec_junit_formatter                        --format progress
       - run:
           name: start server for Integration tests
           command: |
