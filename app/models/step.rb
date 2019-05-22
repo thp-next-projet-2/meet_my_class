@@ -16,6 +16,8 @@
 #
 
 class Step < ApplicationRecord
+  validates :name, length: { minimum: 2 }
+
   belongs_to :klass
 
   has_many :progressions, dependent: :destroy

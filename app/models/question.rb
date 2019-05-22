@@ -23,6 +23,8 @@
 #
 
 class Question < ApplicationRecord
+  validates :description, length: { minimum: 10 }
+
   belongs_to :student
   has_many :upvotes, dependent: :destroy
   belongs_to :questionable, polymorphic: true
