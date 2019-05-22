@@ -23,6 +23,6 @@
 require 'rails_helper'
 
 RSpec.describe Klass, type: :model do
-  it { should belong_to(:teacher) }
-  it { should have_many(:steps) }
+  it { is_expected.to belong_to(:teacher) }
+  it { is_expected.to have_many(:steps) }
 end
