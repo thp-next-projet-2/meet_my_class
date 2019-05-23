@@ -1,0 +1,10 @@
+<div class="container">
+  <div class="jumbotron">
+    <h1><%= @klass.title %></h1>
+    <h4 class="text-muted"><%= @klass.description %></h4>
+    <h6 class="text-muted"><%= @klass.teacher.email %></h6>
+  </div>
+  <div class="container d-flex flex-wrap justify-content-between">
+    <%= render 'students' %>
+  </div>
+</div>

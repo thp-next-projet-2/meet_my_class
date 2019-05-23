@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_05_20_125748) do
+ActiveRecord::Schema.define(version: 2019_05_22_080309) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -49,6 +49,11 @@ ActiveRecord::Schema.define(version: 2019_05_20_125748) do
     t.text "description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "questionable_type"
+    t.bigint "questionable_id"
+    t.bigint "student_id"
+    t.index ["questionable_type", "questionable_id"], name: "index_questions_on_questionable_type_and_questionable_id"
+    t.index ["student_id"], name: "index_questions_on_student_id"
   end
 
   create_table "steps", force: :cascade do |t|
@@ -67,6 +72,15 @@ ActiveRecord::Schema.define(version: 2019_05_20_125748) do
     t.datetime "remember_created_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "sign_in_count", default: 0, null: false
+    t.datetime "current_sign_in_at"
+    t.datetime "last_sign_in_at"
+    t.inet "current_sign_in_ip"
+    t.inet "last_sign_in_ip"
+    t.string "confirmation_token"
+    t.datetime "confirmed_at"
+    t.datetime "confirmation_sent_at"
+    t.index ["confirmation_token"], name: "index_students_on_confirmation_token", unique: true
     t.index ["email"], name: "index_students_on_email", unique: true
     t.index ["reset_password_token"], name: "index_students_on_reset_password_token", unique: true
   end
@@ -87,7 +101,14 @@ ActiveRecord::Schema.define(version: 2019_05_20_125748) do
     t.boolean "upvote"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "student_id"
+    t.bigint "question_id"
+    t.index ["question_id"], name: "index_upvotes_on_question_id"
+    t.index ["student_id"], name: "index_upvotes_on_student_id"
   end
 
   add_foreign_key "klasses", "teachers"
+  add_foreign_key "questions", "students"
+  add_foreign_key "upvotes", "questions"
+  add_foreign_key "upvotes", "students"
 end

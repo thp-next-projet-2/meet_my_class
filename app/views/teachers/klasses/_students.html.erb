@@ -1,0 +1,63 @@
+<div class="flex-item col-6">
+  <h2>Étudiants</h2>
+  <p>Nombre: <%= @klass.attendances.count %></p>
+  <table class="table col-md-6">
+    <tbody>
+      <% @klass.students.order(:email).each do |student| %>
+      <tr>
+        <!-- "css_confirmed" defined in students_helper -->
+        <td class="<%= css_confirmed(student) %>">
+          <%= student.email %>
+        </td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
+<div class="flex-item flex-grow-1">
+  <div class="d-flex justify-content-between flex-wrap">
+    <div class="flex-item">
+      <h2 class="text-muted">Autres</h2>
+      <p>Nombre: <%= @not_klass.count %></p>
+      <table class="table col-md-6">
+        <tbody>
+          <% @not_klass.each do |student| %>
+          <tr>
+            <td>
+              <%= link_to student.email, new_student_attendance_path(student.id), klass_id: @klass.id %>
+            </td>
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+    <div class="flex-item">
+      <h2 class="text-muted">Non confirmés</h2>
+      <p>Nombre: <%= @not_confirmed.count %></p>
+      <table class="table col-md-6">
+        <tbody>
+          <% @not_confirmed.each do |student| %>
+          <tr>
+            <td>
+              <%= student.email %>
+            </td>
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+<div class="flex-item">
+  <h2>Nouveau</h2>
+  <%# simple_form_for @student_new, url: student_registration_path do |f| %>
+  <%= simple_form_for @student_new, controller: 'students', action: 'create' do |f| %>
+  <%# simple_form_for new_student_path do |f| %>
+  <%= f.input_field :email,
+                    required: true,
+                    autofocus: false,
+                    placeholder: "email" %>
+  <%= hidden_field_tag :klass_id, params["id"] %>
+  <%= f.submit "Inviter" %>
+  <% end %>
+</div>
