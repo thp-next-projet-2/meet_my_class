@@ -21,8 +21,12 @@
 #
 
 class Klass < ApplicationRecord
+  validates :title, length: { minimum: 2 }
+  validates :description, length: { minimum: 15 }
+
   has_many :attendances, dependent: :destroy
   has_many :students, through: :attendances
   has_many :steps, dependent: :destroy
   belongs_to :teacher, optional: true
+  has_many :questions, as: :questionable, dependent: :destroy # question polymorphism
 end

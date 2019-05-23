@@ -30,4 +30,6 @@
 
 # Ignore VSCode config
 .vscode/*
+
+/coverage
 .idea

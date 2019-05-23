@@ -25,9 +25,14 @@ class Student < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
+  validates :email, uniqueness: true
+
   has_many :attendances, dependent: :destroy
   has_many :klasses, through: :attendances
 
   has_many :progressions, dependent: :destroy
   has_many :steps, through: :progressions
+
+  has_many :questions, dependent: :destroy
+  has_many :upvotes, dependent: :destroy
 end

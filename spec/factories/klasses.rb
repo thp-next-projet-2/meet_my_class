@@ -22,7 +22,7 @@
 
 FactoryBot.define do
   factory :klass do
-    title { "MyString" }
-    description { "MyText" }
+    title { Faker::Book.title }
+    description { Faker::Lorem.characters(25) }
   end
 end
