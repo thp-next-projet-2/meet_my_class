@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
+  root 'welcome#index'
   # namespace :klasses do
   #  get 'students/index'
   #  get 'students/new'
