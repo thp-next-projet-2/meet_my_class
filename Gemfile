@@ -29,6 +29,7 @@ gem 'uglifier', '>= 1.3.0'
 group :development, :test do
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
   gem 'factory_bot_rails', '~> 4.0'
+  gem 'shoulda-matchers', '~> 3.1'
   gem 'skylight'
 end
 
@@ -54,7 +55,6 @@ group :test do
   gem 'database_cleaner', '~> 1.7'
   gem 'rspec_junit_formatter'
   gem 'selenium-webdriver'
-  gem 'shoulda-matchers', '~> 3.1'
   gem 'simplecov', '~> 0.16.1', require: false
   gem 'webdrivers', '~> 3.0'
 end
