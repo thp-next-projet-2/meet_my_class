@@ -49,4 +49,6 @@ RSpec.describe Student, type: :model do
   it "follows the klasses link" do
     expect(subject.klasses.first.students).to include(subject)
   end
+
+  it { expect(FactoryBot.create(:student)).to have_many(:attendances) }
 end

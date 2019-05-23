@@ -9,7 +9,9 @@ Rails.application.routes.draw do
   devise_for :teachers
   resources :teachers, only: %i[index show]
   namespace :teachers do
-    resources :klasses
+    resources :klasses do
+    resources :steps
+     end
   end
   # SEE: https://github.com/plataformatec/devise/wiki/How-To:-Email-only-sign-up
   devise_for :students, controllers: {
@@ -17,15 +19,13 @@ Rails.application.routes.draw do
     passwords: 'students/passwords',
     registrations: 'students/registrations'
   }
-
-  # SEE: https://guides.rubyonrails.org/routing.html#shallow-nesting
-  resources :klasses do
-    resources :students, only: %i[index new create]
+  resources :students do
     resources :attendances
-    resources :steps
   end
 
-  resources :students, only: %i[show edit update destroy]
+  namespace :students do
+    resources :klasses
+  end
 
   root 'teachers#index'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html

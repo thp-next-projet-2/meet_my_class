@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class KlassesController < ApplicationController
+class Students::KlassesController < ApplicationController # rubocop:disable Style/ClassAndModuleChildren
   def index
     @klasses = Klass.all
   end
@@ -13,10 +13,5 @@ class KlassesController < ApplicationController
     # Students that are not confirmed (all classes)
     @not_confirmed = Student.where(confirmed_at: nil).order(:email)
     @student_new = Student.new
-
-    # new step
-    @klass_step = Klass.includes(:steps).find(params[:id])
-    @step_new = Step.new
-    # Steps in klass
   end
 end

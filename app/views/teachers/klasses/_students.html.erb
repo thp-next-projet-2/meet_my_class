@@ -24,7 +24,7 @@
           <% @not_klass.each do |student| %>
           <tr>
             <td>
-              <%= student.email %>
+              <%= link_to student.email, new_student_attendance_path(student.id), klass_id: @klass.id %>
             </td>
           </tr>
           <% end %>
@@ -51,7 +51,8 @@
 <div class="flex-item">
   <h2>Nouveau</h2>
   <%# simple_form_for @student_new, url: student_registration_path do |f| %>
-  <%= simple_form_for @student_new, url: klass_students_path(@klass.id), action: 'create' do |f| %>
+  <%= simple_form_for @student_new, controller: 'students', action: 'create' do |f| %>
+  <%# simple_form_for new_student_path do |f| %>
   <%= f.input_field :email,
                     required: true,
                     autofocus: false,

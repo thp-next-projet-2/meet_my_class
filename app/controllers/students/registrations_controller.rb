@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class Students::RegistrationsController < Devise::RegistrationsController # rubocop:disable Style/ClassAndModuleChildren
-  # before_action :configure_sign_up_params, only: [:create]
+  before_action :configure_sign_up_params, only: [:create]
   # before_action :configure_account_update_params, only: [:update]
 
   # GET /resource/sign_up
@@ -11,9 +11,8 @@ class Students::RegistrationsController < Devise::RegistrationsController # rubo
 
   # POST /resource
   def create
-    puts "#" * 60
-    puts params[:klass_id]
     super
+    Attendance.create!(student_id: resource.id, klass_id: params[:klass_id], invited_at: Time.zone.now)
   end
 
   # GET /resource/edit
