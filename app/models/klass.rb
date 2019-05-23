@@ -23,6 +23,8 @@
 class Klass < ApplicationRecord
   has_many :attendances, dependent: :destroy
   has_many :students, through: :attendances
+
   has_many :steps, dependent: :destroy
+
   belongs_to :teacher, optional: true
 end

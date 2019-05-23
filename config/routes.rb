@@ -22,7 +22,9 @@ Rails.application.routes.draw do
   resources :klasses do
     resources :students, only: %i[index new create]
     resources :attendances
+    resources :steps
   end
+
   resources :students, only: %i[show edit update destroy]
 
   root 'teachers#index'

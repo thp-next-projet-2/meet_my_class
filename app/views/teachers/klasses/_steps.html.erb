@@ -1,0 +1,42 @@
+
+<div class="flex-item col-6">
+  <h2>Steps</h2>
+  <p>Nombre: <%= @klass.steps.count %></p>
+  <table class="table col-md-6">
+    <tbody>
+    <%= @klass.steps.order(:name).each do |step| %>
+      <tr>
+        <!-- "css_confirmed" defined in students_helper -->
+        <td>
+          lllllllllll
+          <%= step.name%>
+        </td>
+      </tr>
+    <% end %>
+    </tbody>
+  </table>
+</div>
+    <div class="flex-item">
+      <table class="table col-md-6">
+        <tbody>
+        <% @not_confirmed.each do |student| %>
+          <tr>
+            <td>
+              <%= student.email %>
+            </td>
+          </tr>
+        <% end %>
+        </tbody>
+      </table>
+    </div>
+ </div>
+<div class="flex-item">
+  <h2>Nouveau Steps </h2>
+  <%# simple_form_for @student_new, url: student_registration_path do |f| %>
+  <% binding.pry %>
+  <%= simple_form_for @step_new, url: klass_steps_path(@klass_step.id), action: 'create' do |f| %>
+    <%= f.input_field :name, required: true, autofocus: false, placeholder: "name" %>
+    <%= hidden_field_tag :klass_id, params["id"] %>
+    <%= f.submit "create steps" %>
+  <% end %>
+</div>

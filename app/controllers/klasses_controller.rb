@@ -13,5 +13,10 @@ class KlassesController < ApplicationController
     # Students that are not confirmed (all classes)
     @not_confirmed = Student.where(confirmed_at: nil).order(:email)
     @student_new = Student.new
+
+    # new step
+    @klass_step = Klass.includes(:steps).find(params[:id])
+    @step_new = @klass.steps.build
+    # Steps in klass
   end
 end
