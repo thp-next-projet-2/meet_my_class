@@ -10,8 +10,8 @@ Rails.application.routes.draw do
   resources :teachers, only: %i[index show]
   namespace :teachers do
     resources :klasses do
-    resources :steps
-     end
+      resources :steps
+    end
   end
   # SEE: https://github.com/plataformatec/devise/wiki/How-To:-Email-only-sign-up
   devise_for :students, controllers: {

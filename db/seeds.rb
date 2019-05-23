@@ -25,4 +25,3 @@ t.klasses.create!(title: 'Class Two', description: "That's class another class, 
 Attendance.create(klass_id: 1, student_id: 1)
 Attendance.create(klass_id: 2, student_id: 1)
 Attendance.create(klass_id: 2, student_id: 2)
-
