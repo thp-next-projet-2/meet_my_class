@@ -33,7 +33,7 @@
 <div class="flex-item">
   <h2>Nouveau Steps </h2>
   <%# simple_form_for @student_new, url: student_registration_path do |f| %>
-  <% binding.pry %>
+
   <%= simple_form_for @step_new, url: klass_steps_path(@klass_step.id), action: 'create' do |f| %>
     <%= f.input_field :name, required: true, autofocus: false, placeholder: "name" %>
     <%= hidden_field_tag :klass_id, params["id"] %>
