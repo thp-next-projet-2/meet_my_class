@@ -20,10 +20,12 @@ end
 
 require 'codecov'
 
-SimpleCov.formatters = SimpleCov::Formatter::MultiFormatter.new([
-                                                                  SimpleCov::Formatter::HTMLFormatter,
-                                                                  SimpleCov::Formatter::Codecov,
-                                                                ])
+SimpleCov.formatters = SimpleCov::Formatter::MultiFormatter.new(
+  [
+    SimpleCov::Formatter::HTMLFormatter,
+    SimpleCov::Formatter::Codecov,
+  ]
+)
 
 # Add additional requires below this line. Rails is not loaded until this point!
 

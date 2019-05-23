@@ -95,3 +95,7 @@ Rails.application.configure do
   #Mailer
   config.action_mailer.default_url_options = { :host => '.herokuapp.com'}
 end
+
+Raven.configure do |config|
+  config.dsn =  ENV['SENTRY_DSN']
+end
