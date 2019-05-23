@@ -21,42 +21,33 @@ jobs:
     steps:
       - checkout
 
-       # Download and cache dependencies
-      - restore_cache:
-          keys:
-          - v1-dependencies-r-{{ checksum "Gemfile.lock" }}-y-{{ checksum "yarn.lock" }}
-          # fallback to using the latest cache if no exact match is found
-          - v1-dependencies-
-
-      # Which version of bundler?
       - run:
-          name: update bundler version
+          name: install bundler
           command: gem install bundler:2.0.1
 
-      - run:
-          name: Which bundler?
-          command: bundle -v
-
-      - run:
-          name: install dependencies
-          command: bundle check || bundle install
+      - restore_cache:
+          keys:
+          - v1-dependencies-{{ checksum "Gemfile.lock" }}-y-{{ checksum "yarn.lock" }}
+          - v1-dependencies-
 
       - run:
           name: install dependencies
           command: |
+            bundle install --jobs=4 --retry=3 --path vendor/bundle
+      - run:
+          name: install dependencies
+          command: |
             yarn install --frozen-lockfile
-
       - save_cache:
           paths:
             - ./vendor/bundle
             - ~/.cache
-          key: v1-dependencies-r-{{ checksum "Gemfile.lock" }}-y-{{ checksum "yarn.lock" }}
-        
+          key: v1-dependencies-{{ checksum "Gemfile.lock" }}-y-{{ checksum "yarn.lock" }}
+
       - run:
           name: Wait for DB
           command: dockerize -wait tcp://localhost:5432 -timeout 1m
 
-      # Database setup
       - run: bundle exec rails db:create db:migrate
 
       - run:
@@ -72,17 +63,14 @@ jobs:
                             --format RspecJunitFormatter \
                             --out /tmp/test-results/rspec.xml \
                             --format progress
-                            
       - run:
           name: start server for Integration tests
           command: |
-            bundle exec rails db:reset && bundle exec rails db:seed && bundle exec rails s -p 2999 -d && yarn run wait-on http://localhost:2999
-
+            bundle exec rails db:reset && bundle exec rails db:seed && bundle exec rails s -p 2999 -d && $(npm bin)/wait-on http://localhost:2999
       - run:
           name: run integration tests
           command: |
             npx cypress run
-
       # collect reports
       - store_test_results:
           path: /tmp/test-results
