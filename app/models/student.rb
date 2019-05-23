@@ -35,8 +35,6 @@ class Student < ApplicationRecord
          :recoverable, :rememberable, :validatable,
          :trackable, :confirmable
 
-  validates :email, uniqueness: true
-
   has_many :attendances, dependent: :destroy
   has_many :klasses, through: :attendances
 
