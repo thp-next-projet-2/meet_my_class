@@ -25,7 +25,7 @@ class Teacher < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  # validates :email, uniqueness: true
+  validates :email, uniqueness: true
 
   has_many :klasses, dependent: :destroy
 end
