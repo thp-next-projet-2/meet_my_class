@@ -1,15 +1,13 @@
-class Students::QuestionsController < ApplicationController
-    
-    def index
-        @questions = Qestions.all
-    end
-    
-    def show
-        @question = Question.find(params[:id])
-    end
+# frozen_string_literal: true
 
-    def create
-        
-    end
+class Students::QuestionsController < ApplicationController # rubocop:disable Style/ClassAndModuleChildren
+  def index
+    @questions = Questions.all
+  end
 
+  def show
+    @question = Question.find(params[:id])
+  end
+
+  def create; end
 end
