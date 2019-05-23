@@ -44,7 +44,7 @@ class Student < ApplicationRecord
   has_many :questions, dependent: :destroy
   has_many :upvotes, dependent: :destroy
 
-  validates :email, presence: true, uniqueness: { case_sensitive: false }
+  # validates :email, presence: true, uniqueness: { case_sensitive: false }
 
   protected
 
