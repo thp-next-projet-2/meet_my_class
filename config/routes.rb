@@ -17,13 +17,12 @@ Rails.application.routes.draw do
     passwords: 'students/passwords',
     registrations: 'students/registrations'
   }
-
-  # SEE: https://guides.rubyonrails.org/routing.html#shallow-nesting
-  resources :klasses do
-    resources :students, only: %i[index new create]
+  resources :students do
     resources :attendances
   end
-  resources :students, only: %i[show edit update destroy]
+  namespace :students do
+    resources :klasses
+  end
 
   root 'teachers#index'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
