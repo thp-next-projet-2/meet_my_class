@@ -5,11 +5,23 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
+    <!-- * responsive bootstrap * -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
-    <%= yield %>
+    <header>
+      <%= render 'layouts/navbar' %>
+      <%= render 'layouts/flash' %>
+    </header>
+    <main>
+      <%= yield %>
+    </main>
+    <footer>
+      <%= render 'layouts/footer' %>
+    </footer>
   </body>
 </html>
