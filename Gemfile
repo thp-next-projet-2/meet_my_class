@@ -8,18 +8,20 @@ File.read('./.ruby-version')
 
 gem 'aws-sdk-s3', require: false
 gem 'bootsnap', '>= 1.1.0', require: false
+gem 'bootstrap', '~> 4.3', '>= 4.3.1'
 gem 'coffee-rails', '~> 4.2'
 gem 'devise', '~> 4.6.0'
-gem 'devise-bootstrap-views'
-gem 'dotenv-rails', '~> 2.7.2'
+gem 'devise-i18n', '~> 1.8'
 gem 'faker', '~> 1.8', '>= 1.8.7'
 gem 'jbuilder', '~> 2.5'
+gem 'jquery-rails', '~> 4.3', '>= 4.3.3'
 gem 'pg', '>= 0.18', '< 2.0'
 gem 'puma', '~> 3.11'
 gem 'rails', '~> 5.2.3'
 gem 'sass-rails', '~> 5.0'
 gem 'sentry-raven', '~> 2.9.0'
 gem 'sidekiq'
+gem 'simple_form', '~> 4.1'
 gem 'turbolinks', '~> 5'
 gem 'uglifier', '>= 1.3.0'
 
