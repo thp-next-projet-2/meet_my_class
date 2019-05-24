@@ -32,3 +32,5 @@
 .vscode/*
 
 /coverage
+
+.idea
