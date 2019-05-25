@@ -4,6 +4,31 @@
 
 ############## <p>
 
-<%= @klass.description%> <p>
+<div class= "container", style= border-style:solid >
+    <h3> Intitulé du cours</h3><p>
+    <%= @klass.title%>
+</div>
 
-<%= @klass.questions.last.upvotes.count%>
+<div class= "container", style= border-style:solid >
+    <h3> Description du cours</h3><p>
+    <%= @klass.description%>
+</div>
+
+<div class= "container", style= "border-style:solid" >
+    <h4>Questions :</h4><p>
+    <% unless @klass.questions != nil %>
+      <%@klass.questions.last.description%>
+    <% end %>
+        
+<h5>Vote pour cette question</h5>
+    <div>
+    
+</div>
+
+<div class="container", style= "border-style:solid" > <%= link_to "nouvelle question", new_klass_question_path(@klass)  %></div>
+
+
+
+<div style="position: absolute;bottom: 8px;">
+<%= link_to "retour", klasses_path%>
+</div>

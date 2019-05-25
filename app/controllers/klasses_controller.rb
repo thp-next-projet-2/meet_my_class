@@ -4,10 +4,19 @@ class KlassesController < ApplicationController
   before_action :authenticate_student!
 
   def index
-    @klass = Klass.last
+    @klasses = current_student.klasses
   end
 
   def show
     @klass = Klass.find(params[:id])
+    @questions = @klass.questions
+  end
+
+  private
+
+  def question_new
+    @klass = Klass.find(params[:id])
+    @klass.questions.create
+    redirect_to(klasses_path(@klass))
   end
 end

@@ -5,10 +5,10 @@
 ##################################################################### <p>
 <div class=flex>
 <div class=container center; style= border-style:solid;> 
-<%= @klass.title%>  <%= link_to 'Détail de la classe', klass_path(@klass) %><p>
+<% @klasses.each do |k| %>
+<%= k.title%>  <%= link_to 'Détail de la classe', klass_path(k) %><p>
+<% end %>
 
-<%= @klass.questions.last.description%><p>
-<%= @klass.questions.last.student.email%>
 
 </div>
 
