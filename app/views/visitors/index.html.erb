@@ -1,0 +1,27 @@
+<h1>Landing page</h1>
+
+
+<p>visitors/index.html</p>
+
+<!-- ! This is temporary code -->
+<p>This should actually host a login form that redirects to the dashboard for users (now in v2: students/teachers/both).</p>
+<code>
+
+<h2>Professeurs</h2>
+<ul>
+  <% @teachers.each do |teacher| %>
+  <li>
+    <%= link_to teacher.email, teacher_path(teacher.id) %>
+  </li>
+  <% end %>
+</ul>
+
+<h2>Étudiants</h2>
+<ul>
+    <% @students.each do |student| %>
+    <li>
+      <%= link_to student.email, student_path(student.id) %>
+    </li>
+    <% end %>
+  </ul>
+</code>

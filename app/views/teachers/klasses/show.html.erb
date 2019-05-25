@@ -1,0 +1,10 @@
+<h1><%= @klass.title %></h1>
+<p><%= @klass.teacher.email %></p>
+Nombre : <%= @klass.students.count %>
+<ul>
+  <% @klass.students.each do |student| %>
+  <li>
+    <%= student.email %>
+  </li>
+  <% end %>
+</ul>

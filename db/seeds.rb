@@ -7,3 +7,29 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+require 'faker'
+
+2.times do |i|
+  teacher = Teacher.create!(
+    email: "teacher#{i + 1}@yopmail.com",
+    password: 'password'
+  )
+  2.times do
+    Klass.create!(
+      title: Faker::Music::RockBand.name,
+      description: Faker::Quote.yoda,
+      teacher: teacher
+    )
+  end
+end
+
+10.times do |i|
+  student = Student.create!(
+    email: "student#{i + 1}@yopmail.com",
+    password: 'password'
+  )
+  Attendance.create!(
+    student: student,
+    klass_id: Random.rand(1..4)
+  )
+end

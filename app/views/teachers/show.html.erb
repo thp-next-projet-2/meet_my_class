@@ -1,0 +1,7 @@
+<h1><%= @teacher.email %></h1>
+<h2>Classes</h2>
+<ul>
+  <%= render partial: 'teachers/klasses/index',
+             collection: @klasses,
+             as: :klass || "Pas encore de classes" %>
+</ul>
