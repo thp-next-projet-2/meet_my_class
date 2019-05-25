@@ -65,6 +65,68 @@ jobs:
             bundle exec rubocop
       # run tests!
       - run:
+          name: run testsversion: 2
+orbs:
+  codecov: codecov/codecov@1.0.4
+jobs:
+  build:
+    docker:
+      - image: circleci/ruby:2.6.2-node-browsers-legacy
+        environment:
+          RAILS_ENV: test
+          PGHOST: 127.0.0.1
+          POSTGRES_USER: circleci_user
+          POSTGRES_PASSWORD: password
+          POSTGRES_PORT: 5432
+
+      - image: circleci/postgres:10-alpine-postgis
+        environment:
+          POSTGRES_USER: circleci_user
+          POSTGRES_PASSWORD: password
+          POSTGRES_DB: meet_my_class_circleci_db
+
+    steps:
+      - checkout
+
+       # Download and cache dependencies
+      - restore_cache:
+          keys:
+          - v1-dependencies-r-{{ checksum "Gemfile.lock" }}
+          # fallback to using the latest cache if no exact match is found
+          - v1-dependencies-
+
+      # Which version of bundler?
+      - run:
+          name: update bundler version
+          command: gem install bundler:2.0.1
+
+      - run:
+          name: Which bundler?
+          command: bundle -v
+
+      - run:
+          name: install dependencies
+          command: bundle check || bundle install --jobs=4 --retry=3 --path vendor/bundle
+
+      - save_cache:
+          paths:
+            - ./vendor/bundle
+            - ~/.cache
+          key: v1-dependencies-r-{{ checksum "Gemfile.lock" }}
+        
+      - run:
+          name: Wait for DB
+          command: dockerize -wait tcp://localhost:5432 -timeout 1m
+
+      # Database setup
+      - run: bundle exec rails db:create db:migrate
+
+      - run:
+          name: run linting
+          command: |
+            bundle exec rubocop
+      # run tests!
+      - run:
           name: run tests
           command: |
             mkdir /tmp/test-results
