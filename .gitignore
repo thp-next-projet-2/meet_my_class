@@ -34,3 +34,6 @@
 /coverage
 
 .idea
+
+# Ignore cypress exemples
+cypress/integration/exemples/*
