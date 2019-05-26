@@ -6,7 +6,6 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
   root 'klasses#index'
-  resources :klasses do
-    resources :questions
-  end
+  resources :klasses
+  resources :questions
 end
