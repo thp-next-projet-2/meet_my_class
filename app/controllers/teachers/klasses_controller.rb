@@ -10,7 +10,7 @@ class Teachers::KlassesController < ApplicationController # rubocop:disable Styl
   end
 
   def redirect_unauthorized
-    flash[:alert] = "This is not your class"
+    flash[:alert] = "Vous ne donnez pas cette classe"
     redirect_to root_path
   end
 

@@ -11,7 +11,7 @@ class TeachersController < ApplicationController
   end
 
   def redirect_unauthorized
-    flash[:alert] = "This is not your dashboard"
+    flash[:alert] = "Vous n'êtes pas autorisé à accéder à cette page"
     redirect_to root_path
   end
 
