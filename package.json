@@ -1,9 +1,7 @@
 {
   "name": "meet_my_class",
   "private": true,
-  "dependencies": {
-    "wait-on": "^3.2.0"
-  },
+  "dependencies": {},
   "husky": {
     "hooks": {
       "pre-commit": "rubocop",
