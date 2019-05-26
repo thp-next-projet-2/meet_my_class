@@ -1,1 +1,5 @@
 <h1><%= @student.email %></h1>
+
+<ul>
+  <%= render partial: 'klasses/index', collection: @student.klasses, as: :klass %>
+</ul>

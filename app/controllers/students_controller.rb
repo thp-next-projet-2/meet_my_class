@@ -2,6 +2,6 @@
 
 class StudentsController < ApplicationController
   def show
-    @student = Student.find(params[:id])
+    @student = Student.includes(:klasses).find(params[:id])
   end
 end
