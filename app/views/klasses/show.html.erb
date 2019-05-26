@@ -14,16 +14,20 @@
     <%= @klass.description%>
 </div>
 
+
 <div class= "container", style= "border-style:solid" >
     <h4>Questions :</h4><p>
-    <% unless @klass.questions != nil %>
-      <%@klass.questions.last.description%>
+    <% if @questions.nil? %>
+    <%else%>
+     <%@questions.each do |q| %>
+      <h4> - <%= q.description%></h4>
+      <div type="button", class="btn-primary">Vote  <%= q.upvotes.count%>
+     </div>
+     <% end %>
     <% end %>
-        
-<h5>Vote pour cette question</h5>
-    <div>
+    </div>
+
     
-</div>
 
 <div class="container", style= "border-style:solid" > <%= link_to "nouvelle question", new_klass_question_path(@klass)  %></div>
 
