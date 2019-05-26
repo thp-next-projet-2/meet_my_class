@@ -24,7 +24,7 @@ jobs:
        # Download and cache dependencies
       - restore_cache:
           keys:
-          - v1-dependencies-r-{{ checksum "Gemfile.lock" }}
+          - v1-dependencies-r-{{ checksum "Gemfile.lock" }}-y-{{ checksum "yarn.lock" }}
           # fallback to using the latest cache if no exact match is found
           - v1-dependencies-
 
@@ -45,7 +45,7 @@ jobs:
           paths:
             - ./vendor/bundle
             - ~/.cache
-          key: v1-dependencies-r-{{ checksum "Gemfile.lock" }}
+          key: v1-dependencies-r-{{ checksum "Gemfile.lock" }}-y-{{ checksum "yarn.lock" }}
         
       - run:
           name: Wait for DB
@@ -71,7 +71,7 @@ jobs:
       - run:
           name: start server for Integration tests
           command: |
-            bundle exec rails db:reset && bundle exec rails db:seed && bundle exec rails s -p 2999 -d && $(npm bin)/wait-on http://localhost:2999
+            bundle exec rails db:reset && bundle exec rails db:seed && bundle exec rails s -p 2999 -d && yarn run wait-on http://localhost:2999
 
       - run:
           name: run integration tests
