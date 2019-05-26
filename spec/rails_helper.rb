@@ -13,6 +13,7 @@ require 'capybara/rails'
 require 'rspec/rails'
 require 'faker'
 require 'simplecov'
+require "pundit/rspec"
 
 SimpleCov.start do
   add_filter "/spec/"
