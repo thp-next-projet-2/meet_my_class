@@ -7,9 +7,6 @@
 
   ],
   "env": {
-    "SENTRY_DSN": {
-      "required": true
-    }
   },
   "formation": {
   },
