@@ -2,7 +2,7 @@
 
 class TeachersController < ApplicationController
   def show
-    @teachers = Teacher.all.order(:email)
-    @students = Student.all.order(:email)
+    @teacher = Teacher.find(params[:id])
+    @klasses = @teacher.klasses.includes(:students).order(:title)
   end
 end
