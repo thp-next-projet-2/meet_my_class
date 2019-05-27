@@ -1,0 +1,80 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+	<%= link_to "Meet My Class", root_path, class:"navbar-brand" %>
+	<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+	 aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+		<span class="navbar-toggler-icon"></span>
+	</button>
+
+	<div class="collapse navbar-collapse" id="navbarSupportedContent">
+		<ul class="navbar-nav mr-auto">
+
+
+			<li class="nav-item dropdown megamenu">
+
+
+				<% if current_teacher %>
+				<!-- Je suis un Prof -->
+			<li class="nav-item dropdown">
+				<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true"
+				 aria-expanded="false">
+					Professeur
+				</a>
+				<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+					<%= link_to 'Déconnexion', destroy_teacher_session_path, method: :delete, class:"dropdown-item" %>
+					<div class="dropdown-divider"></div>
+					<%= link_to ' Paramètres',  edit_teacher_registration_path, class:"dropdown-item" %>
+					<%= link_to 'Espace de travail',  courses_path, class:"dropdown-item" %>
+					<%= link_to 'Nouveau cours',  new_course_path, class:"dropdown-item" %>
+				</div>
+			</li>
+			<!-- Je suis un Prof -->
+
+			<% elsif current_student %>
+			<!-- Je suis un Elève -->
+			<li class="nav-item dropdown">
+				<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true"
+				 aria-expanded="false">
+					Elève
+				</a>
+				<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+					<%= link_to 'Déconnexion', destroy_student_session_path, method: :delete, class:"dropdown-item" %>
+					<div class="dropdown-divider"></div>
+					<%= link_to ' Paramètres',  edit_student_registration_path, class:"dropdown-item" %>
+					<%# <%= link_to ' Espaces d&#130apprentissage',  , class:"dropdown-item" %> <!-- in wait of klasses namespace -->
+				</div>
+			</li>
+			<!-- Je suis un Elève -->
+			<%else%>
+
+
+
+			<!-- Je suis un visiteur -->
+			<li class="nav-item dropdown">
+				<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true"
+				 aria-expanded="false">
+					Elève
+				</a>
+				<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+					<%= link_to 'Inscription', new_student_registration_path, class:"dropdown-item" %>
+					<div class="dropdown-divider"></div>
+					<%= link_to 'Connexion ', new_student_session_path, class:"dropdown-item" %>
+				</div>
+
+			</li>
+			<li class="nav-item dropdown">
+				<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true"
+				 aria-expanded="false">
+					Professeur
+				</a>
+				<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+					<%= link_to 'Inscription', new_teacher_registration_path, class:"dropdown-item" %>
+					<div class="dropdown-divider"></div>
+					<%= link_to 'Connexion ', new_teacher_session_path, class:"dropdown-item" %>
+				</div>
+			</li>
+			<!-- Je suis un visiteur -->
+			<%end%>
+		</ul>
+
+	</div>
+</nav>

@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 class KlassesController < ApplicationController
+<<<<<<< HEAD
   before_action :authenticate_student!
 
   def index
@@ -19,4 +20,6 @@ class KlassesController < ApplicationController
     @klass.questions.create
     redirect_to(klasses_path(@klass))
   end
+=======
+>>>>>>> master
 end
