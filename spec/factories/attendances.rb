@@ -11,11 +11,13 @@
 #  updated_at   :datetime         not null
 #  klass_id     :bigint
 #  student_id   :bigint
+#  stutus_id    :bigint           default(0)
 #
 # Indexes
 #
 #  index_attendances_on_klass_id    (klass_id)
 #  index_attendances_on_student_id  (student_id)
+#  index_attendances_on_stutus_id   (stutus_id)
 #
 
 FactoryBot.define do

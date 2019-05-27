@@ -22,6 +22,4 @@ class Step < ApplicationRecord
 
   has_many :progressions, dependent: :destroy
   has_many :students, through: :progressions
-
-  has_many :questions, as: :questionable, dependent: :destroy # question polymorphism
 end
