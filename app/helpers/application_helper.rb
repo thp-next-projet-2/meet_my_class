@@ -1,12 +1,12 @@
 # frozen_string_literal: true
 
 module ApplicationHelper
-  def bootstrap_flash_messages(type)
-    case type
-    when 'notice' then "alert-info"
-    when 'success' then "alert-success"
-    when 'error' then "alert-danger"
-    when 'alert' then "alert-warning"
+  def flash_class(level)
+    case level
+    when 'notice' then "alert alert-primary alert-info alert-dismissible fade show"
+    when 'success' then "alert alert-primary alert-success alert-dismissible fade show"
+    when 'warning' then "alert alert-primary alert-warning alert-dismissible fade show"
+    when 'alert' then "alert alert-primary alert-error alert-dismissible fade show"
     end
   end
 end
