@@ -14,6 +14,13 @@ Rails.application.routes.draw do
   resources :progressions
 
   devise_for :teachers
+  resources :teachers
+  namespace :teachers do
+    resources :klasses
+  end
+
   devise_for :students
+
+
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
