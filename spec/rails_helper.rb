@@ -11,19 +11,18 @@ Dir["./spec/support/**/*.rb"].sort.each { |f| require f }
 
 require 'capybara/rails'
 require 'rspec/rails'
+require "pundit/rspec"
 require 'faker'
 require 'simplecov'
-require "pundit/rspec"
+require 'codecov'
 
 SimpleCov.start do
   add_filter "/spec/"
 end
 
-require 'codecov'
-
 SimpleCov.formatters = SimpleCov::Formatter::MultiFormatter.new([
                                                                   SimpleCov::Formatter::HTMLFormatter,
-                                                                  SimpleCov::Formatter::Codecov,
+                                                                  SimpleCov::Formatter::Codecov
                                                                 ])
 
 # Add additional requires below this line. Rails is not loaded until this point!

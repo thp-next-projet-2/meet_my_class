@@ -1,5 +1,6 @@
 <h1><%= @klass.title %></h1>
 <p><%= @klass.teacher.email %></p>
+<h3>Participants :</h3>
 Nombre : <%= @klass.students.count %>
 <ul>
   <% @klass.students.each do |student| %>
@@ -8,3 +9,24 @@ Nombre : <%= @klass.students.count %>
   </li>
   <% end %>
 </ul>
+<h3>Inviter :</h3>
+<ul>
+  <% @not_attending.each do |student| %>
+  <li>
+    <%= student.email %>
+  </li>
+  <% end %>
+</ul>
+
+<h3>Inviter nouveau :</h3>
+<%# simple_form_for @student_new, url: student_registration_path do |f| %>
+<%= simple_form_for @student_new, controller: 'students', action: 'create' do |f| %>
+<%# simple_form_for new_student_path do |f| %>
+<%= f.input_field :email,
+                  required: true,
+                  autofocus: false,
+                  placeholder: "email" %>
+<%= f.hidden_field :klass_id, value: params["id"] %>
+<%= f.hidden_field :password, value: @generated_password %>
+<%= f.submit "Inviter" %>
+<% end %>

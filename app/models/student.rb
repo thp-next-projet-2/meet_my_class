@@ -23,6 +23,8 @@
 class Student < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
+  # * # TODO: after_create: send_invitation_mail *
+
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
@@ -36,4 +38,11 @@ class Student < ApplicationRecord
 
   has_many :questions, dependent: :destroy
   has_many :upvotes, dependent: :destroy
+
+  def self.not_attending(klass_id)
+    Student.joins(:attendances)
+           .where("attendances.klass_id != ?", klass_id)
+           .where.not("attendances.klass_id = ?", klass_id)
+           .order(:email)
+  end
 end

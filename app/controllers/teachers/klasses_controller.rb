@@ -5,8 +5,12 @@ class Teachers::KlassesController < ApplicationController # rubocop:disable Styl
   rescue_from Pundit::NotAuthorizedError, with: :redirect_unauthorized
 
   def show
-    @klass = Klass.find(params[:id])
+    @klass = Klass.includes(:students).find(params[:id])
     authorize([:teacher, @klass], :owner?)
+    @attending = @klass.students.order(:email)
+    @not_attending = Student.not_attending(@klass.id)
+    @student_new = Student.new
+    @generated_password = Devise.friendly_token.first(8)
   end
 
   def redirect_unauthorized
