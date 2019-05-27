@@ -23,6 +23,7 @@
       <h4> - <%= q.description%></h4>
       <div type="button", class="btn-primary">Vote  <%= q.upvotes.count%>
      </div>
+     <%= button_to 'Suppprimer', klass_question_path(@klass, q.id), :method => "delete" %>
      <% end %>
     <% end %>
     </div>

@@ -25,8 +25,9 @@ class QuestionsController < ApplicationController
   end
 
   def destroy
+    @question = Question.find(params[:id])
     @question.destroy
-    redirect_to klasses_path
+    redirect_to klass_path(@klass)
     flash[:success] = "Votre question a bien été supprimée"
   end
 
