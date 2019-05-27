@@ -16,11 +16,6 @@
 #  index_upvotes_on_question_id  (question_id)
 #  index_upvotes_on_student_id   (student_id)
 #
-# Foreign Keys
-#
-#  fk_rails_...  (question_id => questions.id)
-#  fk_rails_...  (student_id => students.id)
-#
 
 class Upvote < ApplicationRecord
   belongs_to :student

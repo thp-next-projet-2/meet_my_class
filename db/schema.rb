@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_05_22_080309) do
+ActiveRecord::Schema.define(version: 2019_05_27_035050) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -49,10 +49,9 @@ ActiveRecord::Schema.define(version: 2019_05_22_080309) do
     t.text "description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "questionable_type"
-    t.bigint "questionable_id"
+    t.bigint "klass_id"
     t.bigint "student_id"
-    t.index ["questionable_type", "questionable_id"], name: "index_questions_on_questionable_type_and_questionable_id"
+    t.index ["klass_id"], name: "index_questions_on_klass_id"
     t.index ["student_id"], name: "index_questions_on_student_id"
   end
 
@@ -92,14 +91,13 @@ ActiveRecord::Schema.define(version: 2019_05_22_080309) do
     t.boolean "upvote"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "student_id"
     t.bigint "question_id"
+    t.bigint "student_id"
     t.index ["question_id"], name: "index_upvotes_on_question_id"
     t.index ["student_id"], name: "index_upvotes_on_student_id"
   end
 
   add_foreign_key "klasses", "teachers"
+  add_foreign_key "questions", "klasses"
   add_foreign_key "questions", "students"
-  add_foreign_key "upvotes", "questions"
-  add_foreign_key "upvotes", "students"
 end
