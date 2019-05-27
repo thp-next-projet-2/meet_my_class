@@ -7,6 +7,7 @@ class CreateAttendances < ActiveRecord::Migration[5.2]
       t.datetime :connected_at
       t.belongs_to :student, index: true
       t.belongs_to :klass, index: true
+      t.boolean :status, default: false
 
       t.timestamps
     end
