@@ -18,22 +18,26 @@
 <div class= "container", style= "border-style:solid" >
     <h4>Questions :</h4><p>
     <% if @questions.nil? %>
+
     <%else%>
-     <%@questions.each do |q| %>
-      <h4> - <%= q.description%></h4>
-      <div type="button", class="btn-primary">Vote  <%= q.upvotes.count%>
-     </div>
-     <%= button_to 'Suppprimer', klass_question_path(@klass, q.id), :method => "delete" %>
-     <% end %>
+
+     <%@questions.each do |question| %>
+        <%= question.description%>
+      <%#= button_to 'Upvote', klass_question_upvote_path(@klass,question.id), method: :post%> 
+      <%= form_for [@klass, question,question.upvotes.build] do |f| %>
+        <div><%= f.hidden_field :student_id, :value => current_student.id %></div>
+            <%= f.submit "Like!", class: "btn btn-large btn-primary" %>
+            <% end %> 
+      <%= question.upvotes.count%> <%= (question.upvotes.count) == 1 ? 'Vote': 'Votes'%> <p>
+      <%= button_to 'Suppprimer', klass_question_path(@klass, question.id), :data => {:confirm => 'êtes vous sûr ?'}, :method => "delete", class:'btn-secondary'%>
+        <%end%>
     <% end %>
     </div>
 
-    
 
 <div class="container", style= "border-style:solid" > <%= link_to "nouvelle question", new_klass_question_path(@klass)  %></div>
 
 
-
-<div style="position: absolute;bottom: 8px;">
+<div style="position: relative;bottom: 8px;">
 <%= link_to "retour", klasses_path%>
 </div>
