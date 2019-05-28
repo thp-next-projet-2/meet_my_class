@@ -15,4 +15,11 @@
  */
  @import "functions.scss";
  @import "variables.scss";
- @import "bootstrap";
+ @import "bootstrap";  
+
+ .container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    background-color: #f1f1f1;
+ }

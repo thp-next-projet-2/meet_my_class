@@ -1,0 +1,17 @@
+
+<div class=flex>
+<div class=container center; style= border-style:solid;> 
+<% @klasses.each do |k| %>
+<%= k.title%>  <%= link_to 'Détail de la classe', klass_path(k) %><p>
+<% end %>
+
+
+</div>
+
+<%#= debug current_student%>
+
+<div class=container style= border-style:solid  > 
+<%= link_to 'se connecter', new_student_session_path %><p>
+<%= link_to 'se deconnecter', destroy_student_session_path, method: :delete%>
+</div>
+</div>
