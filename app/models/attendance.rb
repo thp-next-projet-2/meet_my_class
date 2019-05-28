@@ -7,17 +7,16 @@
 #  id           :bigint           not null, primary key
 #  connected_at :datetime
 #  invited_at   :datetime
+#  status       :boolean          default(FALSE)
 #  created_at   :datetime         not null
 #  updated_at   :datetime         not null
 #  klass_id     :bigint
 #  student_id   :bigint
-#  stutus_id    :bigint           default(0)
 #
 # Indexes
 #
 #  index_attendances_on_klass_id    (klass_id)
 #  index_attendances_on_student_id  (student_id)
-#  index_attendances_on_stutus_id   (stutus_id)
 #
 
 class Attendance < ApplicationRecord
