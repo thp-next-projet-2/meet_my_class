@@ -1,17 +1,17 @@
 <h3>Participants :</h3>
 Nombre : <%= @klass.students.count %>
 <ul>
-  <% @klass.students.each do |student| %>
+  <% @klass.students.order(:email).each do |student| %>
   <li>
-    <%= student.email %>
+    <%= student.email %> <%= student.klasses.all.pluck(:id) %>
   </li>
   <% end %>
 </ul>
 <h3>Inviter :</h3>
 <ul>
-  <% @not_attending.each do |student| %>
+  <% @not_attending.order(:email).each do |student| %>
   <li>
-    <%= student.email %>
+    <%= student.email %> <%= student.klasses.all.pluck(:id) %>
   </li>
   <% end %>
 </ul>
