@@ -8,7 +8,7 @@ class UpvotesController < ApplicationController
     if already_vote?
       flash[:warning] = "Vous avez déja voté"
     else
-      @upvote = @question.upvotes.create(student_id: current_student.id)
+      @upvote = @question.upvotes.create(vote_params)
       if @upvote.save
         flash[:success] = "Votre vote est validé"
       else
