@@ -1,0 +1,8 @@
+<h1>Edit</h1>
+<%= form_for @klass do |k| %>
+	Title : 
+	<%= k.text_field :title %>
+	Description : 
+	<%= k.text_field :description %>
+	<%= k.submit %>
+<% end %>

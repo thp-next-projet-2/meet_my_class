@@ -21,7 +21,7 @@ class KlassesController < ApplicationController
   def create
     if current_teacher
       @klass = Klass.create(klass_params)
-      current_teacher.id = @klass.teacher_id
+      @klass.teacher_id = current_teacher.id
     else
       redirect_to klasses_path, alert: "Un problème est servenu veuillez réessayer"
     end
