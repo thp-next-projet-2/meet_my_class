@@ -1,8 +1,10 @@
-##################################################################### <p>
 
-"""""""" Voici les classes"""""""""""" <p>
+<div class=flex>
+<div class=container center; style= border-style:solid;> 
+<% @klasses.each do |k| %>
+<%= k.title%>  <%= link_to 'Détail de la classe', klass_path(k) %><p>
+<% end %>
 
-##################################################################### <p>
 
 <div class="container mt-4 col-6">
   <% if current_teacher %>

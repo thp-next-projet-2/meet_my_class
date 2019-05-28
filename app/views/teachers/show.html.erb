@@ -1,0 +1,9 @@
+<h1><%= @teacher.email %></h1>
+
+<ul>
+  <% @klasses.each do |klass| %>
+  <li>
+    <%= link_to klass.title, teachers_klass_path(klass.id) %> <%= klass.students.count %>
+  </li>
+  <% end %>
+</ul>
