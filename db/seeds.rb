@@ -102,7 +102,7 @@ end
 
 p "Les questions sont créées"
 
-30.times do
+60.times do
   Upvote.create!(
     question: Question.all.sample,
     student: Student.all.sample

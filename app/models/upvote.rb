@@ -21,7 +21,7 @@ class Upvote < ApplicationRecord
   belongs_to :student
   belongs_to :question
 
-  validates :student_id, uniqueness: { scope: :question_id }
+  # validates :student_id, uniqueness: { scope: :question_id }
 
   def upvote_count
     @klass = Klass.find(params[:id])
