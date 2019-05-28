@@ -54,4 +54,3 @@ class KlassesController < ApplicationController
     params.require(:klass).permit(:title, :description, :teacher_id)
   end
 end
-current_teacher.id = @klass.teacher_id
