@@ -102,12 +102,12 @@ end
 
 p "Les questions sont créées"
 
-50.times do
-  Upvote.create!(
-    question: Question.all.sample,
-    student: Student.all.sample
-  )
-end
+# 50.times do
+Upvote.create!(
+  question: Question.all.sample,
+  student: Student.all.sample
+)
+# end
 
 p "Les votes sont crées"
 

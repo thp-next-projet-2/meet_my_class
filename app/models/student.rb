@@ -33,7 +33,7 @@ class Student < ApplicationRecord
          :recoverable, :rememberable, :validatable,
          :trackable
 
-  validates :email, uniqueness: true
+  validates :email, uniqueness: { case_sensitive: false } # , format: { with: /\A[a-zA-Z0-9 _\.]*\z/ }
 
   has_many :attendances, dependent: :destroy
   has_many :klasses, through: :attendances

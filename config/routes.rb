@@ -5,7 +5,7 @@ Rails.application.routes.draw do
 
   resources :klasses do
     resources :questions do
-      resources :upvotes
+      resources :upvotes, except: :show
     end
     resources :steps
     resources :attendances
@@ -23,4 +23,6 @@ Rails.application.routes.draw do
   resources  :students
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+
+  root 'klasses#index'
 end

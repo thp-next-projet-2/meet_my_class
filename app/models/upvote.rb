@@ -20,4 +20,6 @@
 class Upvote < ApplicationRecord
   belongs_to :student
   belongs_to :question
+
+  validates :student_id, uniqueness: { scope: :question_id }
 end
