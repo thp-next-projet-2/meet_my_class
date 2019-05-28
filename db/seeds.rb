@@ -32,7 +32,7 @@ ActiveRecord::Base.connection.reset_pk_sequence!('questions')
 ActiveRecord::Base.connection.reset_pk_sequence!('steps')
 ActiveRecord::Base.connection.reset_pk_sequence!('upvotes')
 
-10.times do
+60.times do
   Student.create!(
     first_name: Faker::Name.first_name,
     last_name: Faker::Name.last_name,
@@ -45,14 +45,14 @@ end
 Student.create!(
   first_name: "Hola",
   last_name: "Quetal",
-  email: "holaquetal@yompail.com",
+  email: "holaquetal@yopmail.com",
   password: "123456",
   password_confirmation: "123456"
 )
 
 p "Les élèves sont crées"
 
-5.times do
+10.times do
   Teacher.create!(
     first_name: Faker::Name.first_name,
     last_name: Faker::Name.last_name,
@@ -102,7 +102,7 @@ end
 
 p "Les questions sont créées"
 
-50.times do
+30.times do
   Upvote.create!(
     question: Question.all.sample,
     student: Student.all.sample
