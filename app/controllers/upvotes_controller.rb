@@ -6,14 +6,14 @@ class UpvotesController < ApplicationController
 
   def create
     if already_vote?
-      flash[:error] = "Vous avez déja voté"
+      flash[:warning] = "Vous avez déja voté"
     else
-      @question.upvotes.create(student_id: current_student.id)
-      # if @upvote.save
-      #    flash[:success] = "Votre question a bien été supprimée"
-      # else
-      #   flash[:alert] = " Votre vote n'a pas fonctionné"
-      # end
+      @upvote = @question.upvotes.create(student_id: current_student.id)
+      if @upvote.save
+        flash[:success] = "Votre vote est validé"
+      else
+        flash[:alert] = " Votre vote n'a pas fonctionné"
+      end
     end
     redirect_to klass_path(@klass)
   end

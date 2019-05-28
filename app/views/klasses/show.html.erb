@@ -1,43 +1,44 @@
-############# <p>
+<section>
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <h3> Intitulé du cours</h3><p>
+            <%= @klass.title%>
+        </div>
 
-"""""""" Détail du cours """"""""""" <p>
-
-############## <p>
-
-<div class= "container", style= border-style:solid >
-    <h3> Intitulé du cours</h3><p>
-    <%= @klass.title%>
-</div>
-
-<div class= "container", style= border-style:solid >
-    <h3> Description du cours</h3><p>
-    <%= @klass.description%>
-</div>
+        <div class="col">
+            <h3> Description du cours</h3><p>
+            <%= @klass.description%>
+        </div>
 
 
-<div class= "container", style= "border-style:solid" >
-    <h4>Questions :</h4><p>
-    <% if @questions.nil? %>
+        <div class="col-5", style="border: solid">
+            <h4>Questions :</h4><p>
+            <% if @questions.nil? %>
 
-    <%else%>
+            <%else%>
 
-     <%@questions.each do |question| %>
-        <%= question.description%>
-      <%#= button_to 'Upvote', klass_question_upvote_path(@klass,question.id), method: :post%> 
-      <%= form_for [@klass, question,question.upvotes.build] do |f| %>
-        <div><%= f.hidden_field :student_id, :value => current_student.id %></div>
-            <%= f.submit "Like!", class: "btn btn-large btn-primary" %>
-            <% end %> 
-      <%= question.upvotes.count%> <%= (question.upvotes.count) == 1 ? 'Vote': 'Votes'%> <p>
-      <%= button_to 'Suppprimer', klass_question_path(@klass, question.id), :data => {:confirm => 'êtes vous sûr ?'}, :method => "delete", class:'btn-secondary'%>
-        <%end%>
-    <% end %>
+            <%@questions.each do |question| %>
+            <%= question.description%>
+            <%= form_for [@klass, question,question.upvotes.build] do |f| %>
+            <%= f.hidden_field :student_id, :value => current_student.id %>
+                <div class="row">    
+                    <div class="col"><%= f.submit "Voter !", class: "btn btn-large btn-primary" %></div>
+                <% end %> 
+                <div class="col"><%= question.upvotes.count%> <%= (question.upvotes.count) == 1 ? 'Vote': 'Votes'%> <p></div>
+               <div class="col"><%= button_to 'Suppprimer', klass_question_path(@klass, question.id), :data => {:confirm => 'êtes vous sûr ?'}, :method => "delete", class:'btn-secondary'%></div>
+            </div>
+             <%end%>
+            <% end %>
+
+        </div>
     </div>
-
-
-<div class="container", style= "border-style:solid" > <%= link_to "nouvelle question", new_klass_question_path(@klass)  %></div>
-
-
-<div style="position: relative;bottom: 8px;">
-<%= link_to "retour", klasses_path%>
 </div>
+
+        <div class="row", style="padding: 10px 50px 20px">
+            <div class="col"><%= link_to "nouvelle question", new_klass_question_path(@klass)%></div>
+
+            <div class="col"><%= link_to "retour", klasses_path%></div>
+        </div>
+
+</section>

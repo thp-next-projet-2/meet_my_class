@@ -14,7 +14,8 @@ class QuestionsController < ApplicationController
       redirect_to klass_path(@klass)
       flash[:success] = "Votre question a bien été enregistrée"
     else
-      redirect_to klasses_path
+      redirect_to new_klass_question_path(@klass)
+      flash[:warning] = "Votre question est trop courte"
     end
   end
 
