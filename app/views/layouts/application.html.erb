@@ -19,14 +19,16 @@
 
   <body>
     <header>
-      <%= render 'layouts/navbar' %>
-      <%= render 'layouts/flash' %>
+      <%= render 'shared/dev_bar' %>
+      <%= render 'shared/navbar' %>
+      <!-- ! temporarily disabled * -->
+      <#= render 'shared/flash' %>
     </header>
     <main>
       <%= yield %>
     </main>
     <footer>
-      <%= render 'layouts/footer' %>
+      <%= render 'shared/footer' %>
     </footer>
   </body>
 

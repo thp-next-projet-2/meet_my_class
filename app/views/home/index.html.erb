@@ -1,5 +1,28 @@
 <section class="container">
-    <div class="d-flex justify-content-center mt-5">
-			<h5 class="btn btn-success mr-2">This website is in contruction soory for the incovenience</h5>
-    </div>
+  <div class="d-flex justify-content-center mt-5">
+    <h5 class="btn btn-success mr-2">This website is in contruction soory for the incovenience</h5>
+  </div>
 </section>
+<!-- ! This is temporary code -->
+<code>
+  <p>This should actually host a login form that redirects to the dashboard for users (now in v2:
+    students/teachers/both).</p>
+
+  <h2>Professeurs</h2>
+  <ul>
+    <% @teachers.each do |teacher| %>
+    <li>
+      <%= link_to teacher.email, teacher_path(teacher.id) %>
+    </li>
+    <% end %>
+  </ul>
+
+  <h2>Étudiants</h2>
+  <ul>
+    <% @students.each do |student| %>
+    <li>
+      <%= link_to student.email, student_path(student.id) %>
+    </li>
+    <% end %>
+  </ul>
+</code>
