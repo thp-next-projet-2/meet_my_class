@@ -31,6 +31,9 @@ module MeetMyClass
 
     # Don't generate system test files.
     config.generators.system_tests = nil
+
+    # Set timezone
+    config.time_zone = "Paris"
   end
 
   Raven.configure do |config|

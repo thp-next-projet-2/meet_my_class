@@ -45,10 +45,9 @@ class Student < ApplicationRecord
   has_many :upvotes, dependent: :destroy
 
   def self.not_attending(klass_id)
-    # * # TODO: Find a way to really exclude those who attend *
-    Student.joins(:klasses)
-           .where.not("klasses.id = ?", klass_id)
-           .where("klasses.id != ?", klass_id)
-           .order(:email).distinct
+    # * # TODO: Find a way to *really* exclude those who attend *
+    joins(:attendances).
+      where.not(attendances: { klass_id: klass_id }).
+      order(:email).distinct
   end
 end

@@ -32,34 +32,21 @@ ActiveRecord::Base.connection.reset_pk_sequence!('questions')
 ActiveRecord::Base.connection.reset_pk_sequence!('steps')
 ActiveRecord::Base.connection.reset_pk_sequence!('upvotes')
 
-10.times do
-  Student.create!(
-    first_name: Faker::Name.first_name,
-    last_name: Faker::Name.last_name,
-    email: Faker::Internet.email,
-    password: "123456",
-    password_confirmation: "123456"
-  )
-end
-
-Student.create!(
-  first_name: "Hola",
-  last_name: "Quetal",
-  email: "holaquetal@yompail.com",
-  password: "123456",
-  password_confirmation: "123456"
-)
-
-p "Les élèves sont crées"
-
-5.times do
-  Teacher.create!(
+3.times do
+  t = Teacher.create!(
     first_name: Faker::Name.first_name,
     last_name: Faker::Name.last_name,
     email: Faker::Internet.email,
     password: "abcdef",
     password_confirmation: "abcdef"
   )
+  Random.rand(1..3).times do
+    Klass.create!(
+      title: Faker::IndustrySegments.industry,
+      description: Faker::Lorem.paragraphs,
+      teacher: t
+    )
+  end
 end
 
 Teacher.create!(
@@ -70,25 +57,54 @@ Teacher.create!(
   password_confirmation: "123456"
 )
 
-p "Les prof sont crées"
+p "Les prof et classes sont créées"
 
-5.times do
-  Klass.create!(
-    title: Faker::IndustrySegments.industry,
-    description: Faker::Lorem.paragraphs,
-    teacher: Teacher.all.sample
+# 5.times do
+#   Klass.create!(
+#     title: Faker::IndustrySegments.industry,
+#     description: Faker::Lorem.paragraphs,
+#     teacher: Teacher.all.sample
+#   )
+# end
+
+# p "Les cours sont crées"
+
+10.times do
+  s = Student.create!(
+    first_name: Faker::Name.first_name,
+    last_name: Faker::Name.last_name,
+    email: Faker::Internet.email,
+    password: "123456",
+    password_confirmation: "123456"
   )
+  Random.rand(0..3).times do
+    Attendance.create!(
+      status: "false",
+      student: s,
+      klass: Klass.all.sample,
+      invited_at: Faker::Date.between(7.days.ago, 5.days.ago),
+      connected_at: [nil, Faker::Date.backward(4)].sample
+    )
+  end
 end
 
-p "Les cours sont crées"
+# Student.create!(
+#   first_name: "Hola",
+#   last_name: "Quetal",
+#   email: "holaquetal@yompail.com",
+#   password: "123456",
+#   password_confirmation: "123456"
+# )
 
-60.times do
-  Attendance.create!(
-    status: "false",
-    student: Student.all.sample,
-    klass: Klass.all.sample,
-  )
-end
+p "Les élèves et participations sont crées"
+
+# 60.times do
+#   Attendance.create!(
+#     status: "false",
+#     student: Student.all.sample,
+#     klass: Klass.all.sample,
+#   )
+# end
 
 p "Les invitations sont créées"
 
