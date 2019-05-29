@@ -102,21 +102,12 @@ end
 
 p "Les questions sont créées"
 
-<<<<<<< HEAD
 60.times do
   Upvote.create!(
     question: Question.all.sample,
     student: Student.all.sample
   )
 end
-=======
-# 50.times do
-Upvote.create!(
-  question: Question.all.sample,
-  student: Student.all.sample
-)
-# end
->>>>>>> master
 
 p "Les votes sont crées"
 

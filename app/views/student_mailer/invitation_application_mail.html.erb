@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+    <style>
+    table, th, td {
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+th, td {
+  padding: 10px;
+  text-align: left;    
+}</style>
+  </head>
+  <body>
+    <h1>Hola</h1>
+    <div>
+    <p><%=@teacher.first_name%>, <%=@teacher.last_name%>  vous a invité a rejoindre The Meet_My_Class : </p>
+     <%= link_to "Accept invitation", new_student_registration_url, class:"btn btn-success" %>  
+  
+    </div>
+    <div>
+      
+    <p>
+        A très vite
+    </p> 
+    </div>
+  </body>
+</html>
