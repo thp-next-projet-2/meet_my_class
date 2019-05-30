@@ -17,6 +17,7 @@ Rails.application.routes.draw do
   resources   :teachers
   namespace   :teachers do
     resources :klasses
+    # resources :klasses, :controller => 'teachers/klasses'
   end
 
   devise_for :students
