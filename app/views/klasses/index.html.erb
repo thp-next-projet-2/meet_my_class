@@ -1,30 +1,13 @@
 
-<div class=flex>
-<div class=container center; style= border-style:solid;> 
-<% @klasses.each do |k| %>
-<%= k.title%>  <%= link_to 'Détail de la classe', klass_path(k) %><p>
-<% end %>
-
-
-<div class="container mt-4 col-6">
-  <% if current_teacher %>
+<section class="container mt-5">
     <% @klasses.each do |k| %>
-    <%= k.title%> 
-    <%= link_to 'Détail de la classe', klass_path(k) %><p>
-    <%= link_to "Edit",edit_klass_path(k.id), class:'btn btn-success' %>
-    <%= link_to "Delete",klass_path(k.id), class:'btn btn-danger', method: :delete %>
+      <%= k.title%>
+      <%= link_to 'Détail de la classe', klass_path(k) %><p>
     <% end %>
 </div>
 
-  <div class="container text-center">
-  <%= link_to "Créer une classe", new_klass_path %>
+</section>
+
+  <div class="col-4 mt-4 mb-8"><div>
+    <%= render partial: "klasses/partial/student_attendance" %></div>
   </div>
-<% end%>
-
-<%#= debug current_student%>
-
-<div class=container style= border-style:solid  > 
-<%= link_to 'se connecter', new_student_session_path %><p>
-<%= link_to 'se deconnecter', destroy_student_session_path, method: :delete%>
-</div>
-</div>

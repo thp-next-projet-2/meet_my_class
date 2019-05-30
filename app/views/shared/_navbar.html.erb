@@ -40,7 +40,7 @@
 					<%= link_to 'Déconnexion', destroy_student_session_path, method: :delete, class:"dropdown-item" %>
 					<div class="dropdown-divider"></div>
 					<%= link_to ' Paramètres',  edit_student_registration_path, class:"dropdown-item" %>
-					<%# <%= link_to ' Espaces d&#130apprentissage',  , class:"dropdown-item" %> <!-- in wait of klasses namespace -->
+					<%= link_to ' Espaces d&lsquoapprentissage', klasses_path(current_student), class:"dropdown-item" %>
 				</div>
 			</li>
 			<!-- Je suis un Elève -->
