@@ -1,0 +1,30 @@
+
+<div class="container mt-5">
+	<h2 class="mb-3">Etapes de la classe :</h2>
+  <% @steps.each do |step| %>
+    <div>
+      <%= step.name %><br />
+			<%= step.description %><br />
+			<% if @klass.attendances.count != 0 %>
+				<%= step.progressions.count %> / <%= @klass.attendances.count %>
+				<div class="progress">
+					<div class="progress-bar" role="progressbar" style="width: <%= (step.progressions.count*100/@klass.attendances.count) %>%"></div>
+				</div>
+			<% end %>
+			<%= link_to "Mettre à jour", edit_klass_step_path(@klass, step), class:"btn btn-success" %>
+			<%= link_to "Supprimé", klass_step_path(@klass, step), method: :delete, class:"btn btn-danger" %>
+    </div><hr>
+  <% end %>
+</div>
+
+<div class="container mt-5">
+	<div class="form-group row">    
+		<div class="col-sm-10">
+			<%= form_for @step, url: klass_steps_path(@klass), method: :post do |f| %>
+					<%= f.text_field :name, class:"form-control form-control-lg", id:"colFormLabelLg", placeholder:"Titre"%>
+					<%= f.text_field :description, class:"form-control", id:"colFormLabel", placeholder:"Description" %>
+					<%= f.submit class:"btn btn-primary mb-2" %>
+			<% end %>
+		</div>
+	</div>
+</div>

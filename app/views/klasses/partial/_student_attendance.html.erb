@@ -1,0 +1,3 @@
+<% if pending_invitation(@klass, current_student) %>
+	<%= link_to 'Ok pour être inviter', klass_attendance_path(@klass, @attendance), method:'PATCH', class:"btn btn-success" %>
+<% end %>

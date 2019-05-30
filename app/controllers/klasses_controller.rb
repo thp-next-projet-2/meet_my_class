@@ -1,56 +1,28 @@
 # frozen_string_literal: true
 
 class KlassesController < ApplicationController
-  before_action :set_klass, only: %i[edit update show destroy]
-  before_action :authenticate_teacher!, only: %i[new create edit update destroy]
-
   def index
-    # @klasses = current_student.klasses
+    @klasses = current_student.klasses
     @klasses = Klass.all
   end
 
   def show
     @klass = Klass.find(params[:id])
-    @questions = @klass.questions
-  end
+    # @questions = @klass.questions
 
-  def new
-    @klass = Klass.new
-  end
+    @questions = @klass.questions.sort_by(&:count_votes).reverse
+    @progression = Progression.new
 
-  def create
-    if current_teacher
-      @klass = Klass.create(klass_params)
-      @klass.teacher_id = current_teacher.id
-    else
-      redirect_to klasses_path, alert: "Un problème est servenu veuillez réessayer"
-    end
-    if @klass.save
-      redirect_to klasses_path, success: "La classe a bien été crée avec succès"
-    else
-      render 'new'
-    end
-  end
+    # for attendances
+    @attendance = Attendance.new
+    @invitations = Attendance.where(klass: @klass, status: false)
+    @attendances = Attendance.where(klass: @klass, status: true)
 
-  def edit; end
+    # for student class
+    @attendance = Attendance.find_by(klass: @klass, student: current_student)
 
-  def update
-    @klass.update(klass_params)
-    redirect_to klasses_path, success: "La classe a bien été mise a jour avec succès"
-  end
-
-  def destroy
-    @klass.destroy
-    redirect_to klasses_path, success: "La classe a bien été supprimer"
-  end
-
-  private
-
-  def set_klass
-    @klass = Klass.find(params[:id])
-  end
-
-  def klass_params
-    params.require(:klass).permit(:title, :description, :teacher_id)
+    # for step
+    @steps = @klass.steps
+    @step = Step.new
   end
 end

@@ -95,7 +95,7 @@ Rails.application.configure do
   #Mailer
   config.action_mailer.default_url_options = { :host => ENV["HOST"] }
   ActionMailer::Base.smtp_settings = {
-    :user_name => ENV["SENDGRID_LOGIN"],
+    :user_name => ENV["SENDGRID_ID"],
     :password => ENV["SENDGRID_PWD"],
     :domain => ENV["HOST"],
     :address => 'smtp.sendgrid.net',

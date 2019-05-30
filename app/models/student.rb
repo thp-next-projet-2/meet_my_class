@@ -39,16 +39,16 @@ class Student < ApplicationRecord
   has_many :klasses, through: :attendances
 
   has_many :progressions, dependent: :destroy
-  has_many :steps, through: :progressions
+  # has_many :steps, through: :progressions
 
   has_many :questions, dependent: :destroy
   has_many :upvotes, dependent: :destroy
 
-  def self.not_attending(klass_id)
-    # * # TODO: Find a way to really exclude those who attend *
-    Student.joins(:klasses)
-           .where.not("klasses.id = ?", klass_id)
-           .where("klasses.id != ?", klass_id)
-           .order(:email).distinct
-  end
+  # def self.not_attending(klass_id)
+  #   # * # TODO: Find a way to really exclude those who attend *
+  #   Student.joins(:klasses)
+  #          .where.not("klasses.id = ?", klass_id)
+  #          .where("klasses.id != ?", klass_id)
+  #          .order(:email).distinct
+  # end
 end

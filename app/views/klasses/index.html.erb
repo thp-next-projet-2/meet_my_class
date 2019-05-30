@@ -21,6 +21,8 @@
   </div>
 <% end%>
 
+<%#= debug current_student%>
+
 <div class=container style= border-style:solid  > 
 <%= link_to 'se connecter', new_student_session_path %><p>
 <%= link_to 'se deconnecter', destroy_student_session_path, method: :delete%>
