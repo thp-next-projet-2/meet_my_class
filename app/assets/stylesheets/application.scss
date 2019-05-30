@@ -15,7 +15,9 @@
  */
  @import "functions.scss";
  @import "variables.scss";
- @import "bootstrap";  
+ @import "bootstrap";
+ @import "hyper/app.min.css";
+ @import "hyper/vendor/jquery-jvectormap-1.2.2.css";
 
  .container {
     display: flex;
