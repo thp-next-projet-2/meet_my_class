@@ -8,21 +8,19 @@
   <p>This should actually host a login form that redirects to the dashboard for users (now in v2:
     students/teachers/both).</p>
 
+    <% if current_teacher%>
   <h2>Professeurs</h2>
-  <ul>
-    <% @teachers.each do |teacher| %>
-    <li>
-      <%= link_to teacher.email, teacher_path(teacher.id) %>
-    </li>
+    <ul>
+        <%= link_to 'Espace de travail', teacher_path(current_teacher) %>
+    </ul>
     <% end %>
-  </ul>
 
+
+    <% if current_student%>
   <h2>Étudiants</h2>
-  <ul>
-    <% @students.each do |student| %>
-    <li>
-      <%= link_to student.email, student_path(student.id) %>
-    </li>
+    <ul>
+      <%= link_to 'Temple du savoir', student_path(current_student) %>
+    </ul>
     <% end %>
-  </ul>
 </code>
+
