@@ -1,4 +1,6 @@
 <h1><%= @klass.title %></h1>
 <p><%= @klass.teacher.email %></p>
 
-<%= render 'teachers/klasses/show_index_students' %>
+  <%= render 'teachers/klasses/partial/teachers_invitations' %>
+
+  <%= render 'teachers/klasses/partial/teachers_steps' %>

@@ -3,7 +3,7 @@
 <ul>
   <% @klasses.each do |klass| %>
   <li>
-    <%= link_to klass.title, teachers_klass_path(klass.id) %> <%= klass.students.count %>
+    <%= link_to klass.title, teachers_klasses_path(klass.id) %> <%= klass.students.count %>
   </li>
   <% end %>
 </ul>

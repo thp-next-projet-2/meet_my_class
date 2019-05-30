@@ -72,25 +72,25 @@ jobs:
                             --out /tmp/test-results/rspec.xml \
                             --format progress
                             
-      - run:
-          name: start server for Integration tests
-          command: |
-            bundle exec rails db:reset && bundle exec rails db:seed && bundle exec rails s -p 2999 -d && yarn run wait-on http://localhost:2999
+      # - run:
+      #     name: start server for Integration tests
+      #     command: |
+      #       bundle exec rails db:reset && bundle exec rails db:seed && bundle exec rails s -p 2999 -d && yarn run wait-on http://localhost:2999
 
-      - run:
-          name: run integration tests
-          command: |
-            npx cypress run
+      # - run:
+      #     name: run integration tests
+      #     command: |
+      #       npx cypress run
 
-      # collect reports
-      - store_test_results:
-          path: /tmp/test-results
-      - store_artifacts:
-          path: /tmp/test-results
-          destination: test-results
-      - store_artifacts:
-          path: ~/app/coverage
-          destination: coverage-results
-      - store_artifacts:
-          path: ~/app/cypress/videos
-          destination: coverage-results
+      # # collect reports
+      # - store_test_results:
+      #     path: /tmp/test-results
+      # - store_artifacts:
+      #     path: /tmp/test-results
+      #     destination: test-results
+      # - store_artifacts:
+      #     path: ~/app/coverage
+      #     destination: coverage-results
+      # - store_artifacts:
+      #     path: ~/app/cypress/videos
+      #     destination: coverage-results

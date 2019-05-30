@@ -22,7 +22,16 @@
 
 FactoryBot.define do
   factory :klass do
-    title { Faker::Book.title }
+    title { Faker::Coffee }
     description { Faker::Lorem.characters(25) }
+    teacher { FactoryBot.create(:teacher) }
+
+    trait :nil_title do
+      title { nil }
+    end
+
+    trait :nil_teacher do
+      teacher_id { nil }
+    end
   end
 end

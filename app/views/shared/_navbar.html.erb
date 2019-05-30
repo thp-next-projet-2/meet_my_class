@@ -23,8 +23,7 @@
 					<%= link_to 'Déconnexion', destroy_teacher_session_path, method: :delete, class:"dropdown-item" %>
 					<div class="dropdown-divider"></div>
 					<%= link_to ' Paramètres',  edit_teacher_registration_path, class:"dropdown-item" %>
-					<%= link_to 'Espace de travail',  klasses_path, class:"dropdown-item" %>
-					<%= link_to 'Nouveau cours',  new_klass_path, class:"dropdown-item" %>
+					<%= link_to 'Nouveau cours',  new_teachers_klass_path, class:"dropdown-item" %>
 				</div>
 			</li>
 			<!-- Je suis un Prof -->
@@ -40,7 +39,6 @@
 					<%= link_to 'Déconnexion', destroy_student_session_path, method: :delete, class:"dropdown-item" %>
 					<div class="dropdown-divider"></div>
 					<%= link_to ' Paramètres',  edit_student_registration_path, class:"dropdown-item" %>
-					<%# <%= link_to ' Espaces d&#130apprentissage',  , class:"dropdown-item" %> <!-- in wait of klasses namespace -->
 				</div>
 			</li>
 			<!-- Je suis un Elève -->

@@ -4,11 +4,12 @@
 #
 # Table name: steps
 #
-#  id         :bigint           not null, primary key
-#  name       :string
-#  created_at :datetime         not null
-#  updated_at :datetime         not null
-#  klass_id   :bigint
+#  id          :bigint           not null, primary key
+#  description :string
+#  name        :string
+#  created_at  :datetime         not null
+#  updated_at  :datetime         not null
+#  klass_id    :bigint
 #
 # Indexes
 #
@@ -21,5 +22,5 @@ class Step < ApplicationRecord
   belongs_to :klass
 
   has_many :progressions, dependent: :destroy
-  has_many :students, through: :progressions
+  # has_many :students, through: :progressions
 end

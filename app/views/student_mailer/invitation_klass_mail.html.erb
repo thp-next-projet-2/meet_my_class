@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+    <style>
+    table, th, td {
+  border: 1px solid grey;
+  border-collapse: collapse;
+}
+th, td {
+  padding: 8px;
+  text-align: left;    
+}</style>
+  </head>
+  <body>
+    <h1>Hola <%= @attendance.student.first_name %> </h1>
+    <div>
+    <p>Vous avez été invité à rejoindre le cours suivant : </p>
+    <p><%= @attendance.klass.title %></p>
+    </div>
+    <div>
+       <p>
+
+          <%= link_to "Accepter l'invitation", klass_url(@klass), class:"btn btn-success" %>  
+
+     </p>
+    <p>
+        À bientôt
+    </p> 
+    </div>
+  </body>
+</html>

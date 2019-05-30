@@ -19,10 +19,9 @@
 
   <body>
     <header>
-      <%= render 'shared/dev_bar' %>
       <%= render 'shared/navbar' %>
-      <!-- ! temporarily disabled * -->
-      <#= render 'shared/flash' %>
+      <%= render 'shared/flash' %>
+      <%= render 'shared/dev_bar' %>
     </header>
     <main>
       <%= yield %>

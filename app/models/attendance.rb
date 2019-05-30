@@ -20,6 +20,12 @@
 #
 
 class Attendance < ApplicationRecord
+  after_create :invitation_to_klass
+
   belongs_to :student
   belongs_to :klass
+
+  def invitation_to_klass
+    StudentMailer.invitation_klass_mail(self).deliver_later
+  end
 end

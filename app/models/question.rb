@@ -28,4 +28,8 @@ class Question < ApplicationRecord
   belongs_to :klass
   belongs_to :student
   has_many :upvotes, dependent: :destroy
+
+  def count_votes
+    upvotes.count
+  end
 end

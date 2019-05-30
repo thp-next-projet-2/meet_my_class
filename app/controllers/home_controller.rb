@@ -3,7 +3,7 @@
 class HomeController < ApplicationController
   def index
     # * TEMPORARY CODE *
-    @teachers = Teacher.all.order(:email)
-    @students = Student.all.order(:email)
+    @teacher = Teacher.all
+    @student = Student.all
   end
 end
