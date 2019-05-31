@@ -1,12 +1,13 @@
 
-<section class="container mt-5">
+<div>
     <% @klasses.each do |k| %>
       <%= k.title%>
       <%= link_to 'Détail de la classe', klass_path(k) %><p>
     <% end %>
 </div>
 
-</section>
+
+
 
   <div class="col-4 mt-4 mb-8"><div>
     <%= render partial: "klasses/partial/student_attendance" %></div>

@@ -62,11 +62,12 @@ RSpec.describe Klass, type: :model do
 
     context 'with nil attributes' do
       let(:klass_nil_title) { build(:klass, :nil_title) }
-      # let(:klass_nil_teacher) { build(:klass, :nil_teacher) } ==> don't work why ? i don't understand
 
       it "is unvalid with nil status" do
         expect(klass_nil_title).not_to be_valid
       end
+
+      # let(:klass_nil_teacher) { build(:klass, :nil_teacher) }
 
       #  ==> don't work why ? i don't understand
       # it "is unvalid with nil student_id" do
