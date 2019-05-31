@@ -4,10 +4,10 @@ Rails.application.routes.draw do
   root 'home#index'
 
   resources :klasses do
-    resources :questions, except: [:index] do
-      resources :upvotes, except: [:show]
+    resources :questions, except: :index do
+      resources :upvotes, except: :show
     end
-    resources :steps
+    resources :steps, except: %i[index new]
     resources :attendances
   end
 
