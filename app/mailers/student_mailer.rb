@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class StudentMailer < ApplicationMailer
-  default from: 'no-reply@theteachingproject.com'
+  default from: 'no-reply@themeetmyclass.com'
 
   def invitation_klass_mail(attendance)
     @attendance = attendance
