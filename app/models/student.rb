@@ -36,19 +36,11 @@ class Student < ApplicationRecord
   validates :email, uniqueness: { case_sensitive: false } # , format: { with: /\A[a-zA-Z0-9 _\.]*\z/ }
 
   has_many :attendances, dependent: :destroy
-  has_many :klasses, through: :attendances
+  has_many :klasses, through: :attendances, dependent: :destroy
 
   has_many :progressions, dependent: :destroy
   # has_many :steps, through: :progressions
 
   has_many :questions, dependent: :destroy
   has_many :upvotes, dependent: :destroy
-
-  # def self.not_attending(klass_id)
-  #   # * # TODO: Find a way to really exclude those who attend *
-  #   Student.joins(:klasses)
-  #          .where.not("klasses.id = ?", klass_id)
-  #          .where("klasses.id != ?", klass_id)
-  #          .order(:email).distinct
-  # end
 end
