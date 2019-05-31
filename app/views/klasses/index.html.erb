@@ -1,12 +1,54 @@
+<div class="content-page">
+  <div class="content">
 
-<section class="container mt-5">
-    <% @klasses.each do |k| %>
-      <%= k.title%>
-      <%= link_to 'Détail de la classe', klass_path(k) %><p>
-    <% end %>
-</div>
+    <!-- Start Content-->
+    <div class="container-fluid">
 
-</section>
+      <div class="row">
+        <div class="col-12">
+          <div class="card">
+            <div class="card-body">
+              <div class="row mb-2">
+                <div class="col-sm-12">
+                  <h2>Vos classes</h2>
+                </div>
+              </div>
+
+              <div class="table-responsive">
+                <table class="table table-centered w-100 dt-responsive nowrap" id="products-datatable">
+                  <thead class="thead-light">
+                    <tr>
+                      <th class="all" style="width: 20px;">
+                        <div class="custom-control custom-checkbox">
+                          <input type="checkbox" class="custom-control-input" id="customCheck1">
+                          <label class="custom-control-label" for="customCheck1">&nbsp;</label>
+                        </div>
+                      </th>
+                      <th class="all">Classe</th>
+                      <th>Professeur</th>
+                      <th>Débuté</th>
+                      <th>Progession</th>
+                      <th>Questions</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <%= render partial: 'klasses/partial/students_klasses', locals: { student: @student }, collection: @klasses, as: 'klass' %>
+                  </tbody>
+                </table>
+              </div>
+            </div> <!-- end card-body-->
+          </div> <!-- end card-->
+        </div> <!-- end col -->
+      </div>
+      <!-- end row -->
+
+    </div> <!-- container -->
+
+  </div> <!-- content -->
+
+
+
+
 
   <div class="col-4 mt-4 mb-8"><div>
     <%= render partial: "klasses/partial/student_attendance" %></div>
