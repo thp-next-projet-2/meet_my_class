@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   root 'home#index'
 
   resources :klasses do
-    resources :questions do
+    resources :questions, except: [:index] do
       resources :upvotes, except: [:show]
     end
     resources :steps
