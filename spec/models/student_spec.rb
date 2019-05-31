@@ -79,6 +79,5 @@ RSpec.describe Student, type: :model do
         expect(student).not_to be_valid
       end
     end
-  
   end
 end
