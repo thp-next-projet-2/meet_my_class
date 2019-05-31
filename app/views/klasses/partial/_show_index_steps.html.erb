@@ -1,0 +1,28 @@
+<tr>
+  <td><%= step.name %></td>
+  <td>
+    <div class="progress-w-percent mb-0">
+      <span class="progress-value"><%= (step.progressions.count*100/@klass.attendances.count) %>% </span>
+      <div class="progress progress-sm">
+        <div class="progress-bar bg-success" role="progressbar"
+          style="width: <%= (step.progressions.count*100/@klass.attendances.count) %>%;"
+          aria-valuenow="<%= (step.progressions.count*100/@klass.attendances.count) %>" aria-valuemin="0"
+          aria-valuemax="100"></div>
+      </div>
+    </div>
+  </td>
+  <td>
+    <div class="custom-control custom-checkbox">
+      <% if step.progressions.where("student_id = ?", current_student.id).count == 0 %>
+        <%= form_for @progression, url: progressions_path(step_id: step.id, student_id: current_student.id), method: :post do |f| %>
+          <%= button_tag( class: "btn btn-primary") do %>
+            <i class="fas fa-check"></i>
+          <% end %>
+        <% end %>
+      <% end %>
+
+      <!-- <input type="checkbox" class="custom-control-input" id="customCheck2">
+      <label class="custom-control-label" for="customCheck2">&nbsp;</label> -->
+    </div>
+  </td>
+</tr>
