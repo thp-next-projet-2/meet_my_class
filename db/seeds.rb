@@ -9,6 +9,7 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 require 'faker'
+ActionMailer::Base.perform_deliveries = false
 
 sleep(1)
 puts "Destroying previous records"
@@ -102,12 +103,12 @@ end
 
 p "Les questions sont créées"
 
-60.times do
-  Upvote.create!(
-    question: Question.all.sample,
-    student: Student.all.sample
-  )
-end
+# 60.times do
+#   Upvote.create!(
+#     question: Question.all.sample,
+#     student: Student.all.sample
+#   )
+# end
 
 p "Les votes sont crées"
 

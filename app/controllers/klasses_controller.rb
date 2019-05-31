@@ -23,6 +23,5 @@ class KlassesController < ApplicationController
 
     # for step
     @steps = @klass.steps
-    @step = Step.new
   end
 end
