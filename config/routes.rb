@@ -5,7 +5,7 @@ Rails.application.routes.draw do
 
   resources :klasses do
     resources :questions do
-      resources :upvotes, except: :show
+      resources :upvotes, except: [:show]
     end
     resources :steps
     resources :attendances
