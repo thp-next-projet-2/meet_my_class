@@ -58,6 +58,6 @@ class AttendancesController < ApplicationController
   end
 
   def invitation_to_application(email, teacher)
-    StudentMailer.invitation_application_mail(email, teacher).deliver_later
+    StudentMailer.invitation_application_mail(email, teacher).deliver_now
   end
 end
