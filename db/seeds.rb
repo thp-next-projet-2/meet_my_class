@@ -116,7 +116,7 @@ p "Les votes sont crées"
   Step.create!(
     name: Faker::IndustrySegments.sector,
     klass: Klass.all.sample,
-    description:Faker::Lorem.paragraphs,
+    description: Faker::Lorem.paragraphs,
   )
 end
 
