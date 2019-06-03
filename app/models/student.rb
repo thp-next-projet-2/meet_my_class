@@ -44,9 +44,9 @@ class Student < ApplicationRecord
   has_many :questions, dependent: :destroy
   has_many :upvotes, dependent: :destroy
 
-  after_create :welcome_send
+  # after_create :welcome_send
 
-  def welcome_send
-    StudentMailer.welcome_email(self).deliver_now
-  end
+  # def welcome_send
+  #   StudentMailer.welcome_email(self).deliver_now
+  # end
 end
