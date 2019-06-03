@@ -23,7 +23,19 @@ FactoryBot.define do
   factory :attendance do
     invited_at { "2019-05-19 18:23:16" }
     connected_at { "2019-05-19 18:23:16" }
-    klass_id { rand(1..8).to_i }
-    student_id { rand(1..8).to_i }
+    created_at { "2019-05-18 18:23:16" }
+    updated_at { "2019-05-18 18:35:16" }
+  end
+
+  trait :invalid_status do
+    status { "true" }
+  end
+
+  trait :invalid_student do
+    student_id { nil }
+  end
+
+  trait :invalid_klass do
+    klass { nil }
   end
 end

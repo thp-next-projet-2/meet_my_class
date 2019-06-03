@@ -18,6 +18,16 @@
 
 FactoryBot.define do
   factory :step do
-    name { "MyString" }
+    name { "Hola" }
+    description { "Quetal" }
+    klass { FactoryBot.create(:klass) }
+
+    trait :invalid_name do
+      name { nil }
+    end
+
+    trait :invalid_klass do
+      klass_id { nil }
+    end
   end
 end

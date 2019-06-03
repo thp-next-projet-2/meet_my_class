@@ -10,9 +10,6 @@ class AttendancesController < ApplicationController
   end
 
   def create
-    # Attendance.create!(student_id: params[:student_id], klass_id: params[:klass_id], invited_at: Time.zone.now)
-    # redirect_to teachers_klass_path(params[:klass_id])
-
     @email = params[:attendance][:email]
     @student = Student.find_by(email: @email)
     @attending = Attendance.find_by(student: @student, klass: @klass)

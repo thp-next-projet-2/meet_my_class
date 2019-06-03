@@ -36,7 +36,7 @@ class Student < ApplicationRecord
   validates :email, uniqueness: { case_sensitive: false } # , format: { with: /\A[a-zA-Z0-9 _\.]*\z/ }
 
   has_many :attendances, dependent: :destroy
-  has_many :klasses, through: :attendances
+  has_many :klasses, through: :attendances, dependent: :destroy
 
   has_many :progressions, dependent: :destroy
   # has_many :steps, through: :progressions
