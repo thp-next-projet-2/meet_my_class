@@ -4,8 +4,14 @@
 # https://thoughtbot.com/blog/data-migrations-in-rails
 namespace :unify_users do # rubocop:disable Metrics/BlockLength
   desc "Migrate Student to User"
-  task move_students: :environment do
-    puts "Going to move #{Student.count} students"
+
+  def log(msg)
+    puts msg
+    Rails.logger.info(msg)
+  end
+
+  task students: :environment do
+    log "Going to move #{Student.count} students"
 
     ActiveRecord::Base.transaction do
       Student.all.each do |s|
@@ -34,12 +40,12 @@ namespace :unify_users do # rubocop:disable Metrics/BlockLength
       end
     end
 
-    puts " All done now!"
+    log " All done now!"
   end
 
   desc "Migrate Teacher to User"
-  task move_teachers: :environment do
-    puts "Going to move #{Teacher.count} teachers"
+  task teachers: :environment do
+    log "Going to move #{Teacher.count} teachers"
 
     ActiveRecord::Base.transaction do
       Teacher.all.each do |t|
@@ -51,15 +57,14 @@ namespace :unify_users do # rubocop:disable Metrics/BlockLength
           last_name: t.last_name
         )
         user.save!
-        Klass.where(teacher_id: t.id) do |k|
-          k.update!(
-            teacher_id: user.id
-          )
+        user.reload
+        Klass.where(teacher_id: t.id).each do |k|
+          k.teacher_id = user.reload.id
           k.save!
         end
       end
     end
 
-    puts " All done now!"
+    log " All done now!"
   end
 end
