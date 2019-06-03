@@ -26,7 +26,7 @@ class Question < ApplicationRecord
   validates :description, length: { minimum: 10 }
 
   belongs_to :klass
-  belongs_to :student
+  belongs_to :student, class_name: 'User', foreign_key: 'student_id', inverse_of: :questions
   has_many :upvotes, dependent: :destroy
 
   def count_votes
