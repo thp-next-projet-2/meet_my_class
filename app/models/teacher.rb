@@ -29,5 +29,5 @@ class Teacher < ApplicationRecord
 
   validates :email, uniqueness: { case_sensitive: false }
 
-  has_many :klasses, dependent: :destroy
+  has_many :klasses, dependent: :destroy, inverse_of: :teacher
 end
