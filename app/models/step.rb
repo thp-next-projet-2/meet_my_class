@@ -18,6 +18,7 @@
 
 class Step < ApplicationRecord
   validates :name, length: { minimum: 2 }
+  validates :name, :description, presence: true
 
   belongs_to :klass
 

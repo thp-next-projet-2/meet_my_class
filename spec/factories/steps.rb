@@ -18,12 +18,12 @@
 
 FactoryBot.define do
   factory :step do
-    name { Faker::Color.color_name }
-    description { Faker::Quotes::Shakespeare.hamlet_quote }
+    name { "Hola" }
+    description { "Quetal" }
     klass { FactoryBot.create(:klass) }
 
-    trait :invalid_title do
-      title { nil }
+    trait :invalid_name do
+      name { nil }
     end
 
     trait :invalid_klass do
