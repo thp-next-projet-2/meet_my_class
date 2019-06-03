@@ -22,20 +22,54 @@
 require 'rails_helper'
 
 RSpec.describe Attendance, type: :model do
-  before do
+  describe 'Database' do
+    it { is_expected.to have_db_column(:student_id).of_type(:integer) }
+    it { is_expected.to have_db_column(:klass_id).of_type(:integer) }
+    it { is_expected.to have_db_column(:status).of_type(:boolean).with_options(default: false) }
+    it { is_expected.to have_db_column(:created_at).of_type(:datetime).with_options(null: false) }
+    it { is_expected.to have_db_column(:updated_at).of_type(:datetime).with_options(null: false) }
+    it { is_expected.to have_db_column(:connected_at).of_type(:datetime) }
+    it { is_expected.to have_db_column(:invited_at).of_type(:datetime) }
   end
 
-  it "has a valid factory" do
-    #  expect(build(:attendance)).to be_valid
+  describe "Associations" do
+    let(:attendance) { build(:attendance) }
+
+    it { expect(attendance).to belong_to(:student) }
+    it { expect(attendance).to belong_to(:klass) }
   end
 
-  context "when associations work" do
-    describe "student" do
-      it { is_expected.to belong_to(:student) }
+  describe 'Factories' do
+    context 'with valid attributes' do
+      let!(:attendance) { build(:attendance) }
+
+      it { expect(attendance.errors).to be_empty }
+
+      # too complex to build
+
+      # it "is valid with valid attributes" do
+      #   expect(attendance).to be_valid
+      # end
     end
 
-    describe "klass" do
-      it { is_expected.to belong_to(:klass) }
+    context 'with unvalid attributes' do
+      let(:attendance_wrong_status) { build(:attendance, :invalid_status) }
+
+      let(:attendance_wrong_student) { build(:attendance, :invalid_student) }
+
+      let(:attendance_wrong_klass) { build(:attendance, :invalid_klass) }
+
+      it "is not valid with unvalid status" do
+        expect(attendance_wrong_status).not_to be_valid
+      end
+
+      it "is not valid with unvalid student_id" do
+        expect(attendance_wrong_student).not_to be_valid
+      end
+
+      it "is not valid with unvalid klass_id" do
+        expect(attendance_wrong_klass).not_to be_valid
+      end
     end
   end
 end
