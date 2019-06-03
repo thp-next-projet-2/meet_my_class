@@ -11,7 +11,7 @@ Rails.application.routes.draw do
     resources :attendances
   end
 
-  resources :progressions
+  resources :progressions, only: %i[create destroy]
 
   devise_for  :teachers
   resources   :teachers
