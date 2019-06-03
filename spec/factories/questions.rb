@@ -24,6 +24,16 @@
 
 FactoryBot.define do
   factory :question do
-    description { "MyText" }
+    description { "MyTextIsTHeTextEverSeen" }
+    student { FactoryBot.create(:student) }
+    klass { FactoryBot.create(:klass) }
+
+    trait :invalid_student do
+      student_id { nil }
+    end
+
+    trait :invalid_klass do
+      klass_id { nil }
+    end
   end
 end
