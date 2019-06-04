@@ -4,17 +4,17 @@
       <div class="row justify-content-between">
       <%= step.name %>
         <div>
-        <% if step.progressions.where("student_id = ?", current_student.id).count == 0 %>
-          <%= form_for @progression, url: progressions_path(step_id: step.id, student_id: current_student.id), method: :post do |f| %>
+        <% if step.progressions.where("student_id = ?", current_user.id).count == 0 %>
+          <%= form_for @progression, url: progressions_path(step_id: step.id, student_id: current_user.id), method: :post do |f| %>
               <%= button_tag( class: "btn btn-primary") do %>
                 <i class="fas fa-check"></i>
               <% end %>
           <% end %>
-        <% else %>      
+        <% else %>
           <span>Etapes achevées</span>
-            <%= link_to progression_path(step.progressions.where("student_id = ?", current_student.id).first), method: :delete, class:"btn btn-danger" do %>
+            <%= link_to progression_path(step.progressions.where("student_id = ?", current_user.id).first), method: :delete, class:"btn btn-danger" do %>
             <i class="fas fa-times"></i>
-            <% end %> 
+            <% end %>
           <% end %><br />
         </div>
       </div>

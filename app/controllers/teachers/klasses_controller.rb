@@ -6,7 +6,7 @@ class Teachers::KlassesController < ApplicationController # rubocop:disable Styl
 
   def index
     # @klasses = Klass.all
-    @klasses = current_teacher.klasses
+    @klasses = current_user.given_klasses
   end
 
   def show
@@ -26,9 +26,9 @@ class Teachers::KlassesController < ApplicationController # rubocop:disable Styl
   end
 
   def create
-    if current_teacher
+    if current_user
       @klass = Klass.create(klass_params)
-      @klass.teacher_id = current_teacher.id
+      @klass.teacher_id = current_user.id
     else
       redirect_to root_path, alert: "Un problème est servenu veuillez réessayer"
     end

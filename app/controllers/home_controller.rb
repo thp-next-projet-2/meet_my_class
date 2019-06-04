@@ -3,7 +3,7 @@
 class HomeController < ApplicationController
   def index
     # * TEMPORARY CODE *
-    @teacher = Teacher.all
-    @student = Student.all
+    @teacher = User.all
+    @student = User.all
   end
 end

@@ -31,7 +31,7 @@ class UpvotesController < ApplicationController
   end
 
   def already_vote?
-    Upvote.where(student_id: current_student.id, question_id: params[:question_id]).exists?
+    Upvote.where(student_id: current_user.id, question_id: params[:question_id]).exists?
   end
 
   def set_klass

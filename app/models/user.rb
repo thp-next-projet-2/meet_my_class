@@ -46,5 +46,5 @@ class User < ApplicationRecord
   has_many :upvotes, inverse_of: 'student', dependent: :destroy
 
   # As teacher
-  has_many :klasses, inverse_of: 'teacher', dependent: :destroy
+  has_many :given_klasses, class_name: 'Klass', foreign_key: 'teacher_id', inverse_of: 'teacher', dependent: :destroy
 end
