@@ -26,6 +26,6 @@ class Attendance < ApplicationRecord
   belongs_to :klass
 
   def invitation_to_klass
-    StudentMailer.invitation_klass_mail(self).deliver_later
+    StudentMailer.invitation_klass_mail(self).deliver_now
   end
 end
