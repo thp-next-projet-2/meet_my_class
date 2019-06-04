@@ -16,13 +16,14 @@ th, td {
   <body>
     <h1>Hola <%= @attendance.student.first_name %> </h1>
     <div>
-    <p>Vous avez été invité à rejoindre le cours suivant : </p>
+    <p> Le professeur <%= @teacher %> vous a invité à rejoindre le cours suivant : </p>
     <p><%= @attendance.klass.title %></p>
     </div>
     <div>
        <p>
 
           <%= link_to "Accepter l'invitation", klass_url(@klass), class:"btn btn-success" %>  
+          
 
      </p>
     <p>
