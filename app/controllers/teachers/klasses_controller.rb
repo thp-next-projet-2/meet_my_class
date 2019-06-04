@@ -2,7 +2,7 @@
 
 class Teachers::KlassesController < ApplicationController # rubocop:disable Style/ClassAndModuleChildren
   # before_action :set_klass, only: %i[edit update show destroy]
-  before_action :authenticate_teacher!, only: %i[new create edit update destroy]
+  before_action :authenticate_user!, only: %i[new create edit update destroy]
 
   def index
     # @klasses = Klass.all

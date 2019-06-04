@@ -3,7 +3,7 @@
 class StepsController < ApplicationController
   before_action :set_step, only: %i[edit update destroy]
   before_action :set_klass, only: %i[create edit]
-  before_action :authenticate_teacher!, only: %i[create edit update destroy]
+  before_action :authenticate_user!, only: %i[create edit update destroy]
 
   def create
     @step = @klass.steps.create(step_params)
