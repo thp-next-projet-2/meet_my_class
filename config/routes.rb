@@ -15,7 +15,7 @@ Rails.application.routes.draw do
   resources :progressions, only: %i[create destroy]
 
   # devise_for  :teachers
-  # resources   :teachers, only: [:show]
+  resources   :teachers, only: [:show]
   namespace   :teachers do
     resources :klasses
     # resources :klasses, :controller => 'teachers/klasses'

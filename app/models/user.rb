@@ -36,8 +36,16 @@ class User < ApplicationRecord
   validates :email, uniqueness: { case_sensitive: false } # , format: { with: /\A[a-zA-Z0-9 _\.]*\z/ }
 
   # As student
-  has_many :attendances, inverse_of: 'student', dependent: :destroy
-  has_many :klasses, inverse_of: 'student', through: :attendances, dependent: :destroy
+  has_many :attendances,
+           foreign_key: 'student_id',
+           inverse_of: :students,
+           dependent: :destroy
+
+  has_many :klasses,
+           foreign_key: 'student_id',
+           through: :attendances,
+           inverse_of: :students,
+           dependent: :destroy
 
   has_many :progressions, inverse_of: 'student', dependent: :destroy
   # has_many :steps, through: :progressions
@@ -46,5 +54,9 @@ class User < ApplicationRecord
   has_many :upvotes, inverse_of: 'student', dependent: :destroy
 
   # As teacher
-  has_many :given_klasses, class_name: 'Klass', foreign_key: 'teacher_id', inverse_of: 'teacher', dependent: :destroy
+  has_many :given_klasses,
+           class_name: 'Klass',
+           foreign_key: 'teacher_id',
+           inverse_of: 'teacher',
+           dependent: :destroy
 end

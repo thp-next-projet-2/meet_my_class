@@ -26,9 +26,20 @@ class Klass < ApplicationRecord
   validates :title, length: { minimum: 2 }
   validates :description, length: { minimum: 15 }
 
-  belongs_to :teacher, class_name: 'User', foreign_key: 'teacher_id', optional: true, inverse_of: :given_klasses
+  belongs_to :teacher,
+             class_name: 'User',
+             foreign_key: 'teacher_id',
+             optional: true,
+             inverse_of: :given_klasses
+
   has_many :attendances, dependent: :destroy
-  has_many :students, class_name: 'User', foreign_key: 'student_id', through: :attendances, inverse_of: :klasses
+  has_many :students,
+           class_name: 'User',
+           source: :student,
+           foreign_key: 'student_id',
+           through: :attendances,
+           inverse_of: :klasses
+
   has_many :steps, dependent: :destroy
   has_many :questions, dependent: :destroy
 end
