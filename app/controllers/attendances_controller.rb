@@ -11,7 +11,7 @@ class AttendancesController < ApplicationController
 
   def create
     @email = params[:attendance][:email]
-    @student = Student.find_by(email: @email)
+    @student = User.find_by(email: @email)
     @attending = Attendance.find_by(student: @student, klass: @klass)
     student = @student
     email = @email

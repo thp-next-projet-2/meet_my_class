@@ -10,21 +10,21 @@
 }
 th, td {
   padding: 10px;
-  text-align: left;    
+  text-align: left;
 }</style>
   </head>
   <body>
     <h1>Hola</h1>
     <div>
       <p><%=@teacher.first_name%>, <%=@teacher.last_name%>  vous a invité a rejoindre The Meet_My_Class : </p>
-      <%= link_to "Accept invitation", new_student_registration_url, class:"btn btn-success" %>  
+      <%= link_to "Accept invitation", new_user_registration_url, class:"btn btn-success" %>
     </div>
 
     <div>
       <p>
           A très vite
-      </p> 
+      </p>
     </div>
-    
+
   </body>
 </html>
