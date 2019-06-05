@@ -10,11 +10,14 @@
 require 'faker'
 ActionMailer::Base.perform_deliveries = false
 
+numbers = ['Zéro', 'Un', 'Deux', 'Trois', 'Quatre', 'Cinq', 'Six', 'Sept', 'Huit', 'Neuf', 'Dix']
 # Create 2 teachers with 2 klasses each
 2.times do |i|
   teacher = User.create!(
     email: "teacher#{i + 1}@yopmail.com",
-    password: 'password'
+    password: 'password',
+    first_name: 'Alice',
+    last_name: numbers[i]
   )
   2.times do
     Klass.create!(
@@ -29,7 +32,9 @@ end
 2.times do |i|
   user = User.create!(
     email: "user#{i + 1}@yopmail.com",
-    password: 'password'
+    password: 'password',
+    first_name: 'Super',
+    last_name: numbers[i]
   )
   Klass.create!(
     title: Faker::Music::RockBand.name,
@@ -46,7 +51,9 @@ end
 10.times do |i|
   student = User.create!(
     email: "student#{i + 1}@yopmail.com",
-    password: 'password'
+    password: 'password',
+    first_name: 'Bob',
+    last_name: numbers[i]
   )
   Random.rand(1..3) do
     Attendance.create!(

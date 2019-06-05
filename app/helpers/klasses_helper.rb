@@ -4,6 +4,4 @@ module KlassesHelper
   def pending_invitation(klass, student)
     return true if Attendance.exists?(klass: klass, student: student, status: false)
   end
-
-  def step_progression(step); end
 end

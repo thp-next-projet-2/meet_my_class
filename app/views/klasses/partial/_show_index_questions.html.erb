@@ -1,15 +1,19 @@
 <tr>
   <td>
     <%= question.description %><br>
-    <%= button_to 'Suppprimer', klass_question_path(@klass, question.id), :data => {:confirm => 'êtes vous sûr ?'}, :method => "delete", class:'btn text-danger text-sm'%>
+    <% if question.student == current_user %>
+      <%= button_to 'Suppprimer', klass_question_path(@klass, question.id), :data => {:confirm => 'êtes vous sûr ?'}, :method => "delete", class:'btn text-danger text-sm'%>
+    <% end %>
   </td>
   <td>
     <%= question.upvotes.count %>
   </td>
   <td>
-    <%= form_for [@klass, question,question.upvotes.build] do |f| %>
-    <%= f.hidden_field :student_id, :value => current_user.id %>
-      <%= f.submit "Voter !", class: "btn btn-sm btn-success" %>
-      <% end %>
+    <% unless question.student == current_user %>
+      <%= form_for [@klass, question,question.upvotes.build] do |f| %>
+      <%= f.hidden_field :student_id, :value => current_user.id %>
+        <%= f.submit "Voter !", class: "btn btn-sm btn-success" %>
+        <% end %>
+    <% end %>
   </td>
 </tr>
