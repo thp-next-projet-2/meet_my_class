@@ -51,7 +51,7 @@ class QuestionsController < ApplicationController
   end
 
   def rightful_author_question
-    if teacher_signed_in? || @question.student == current_user
+    if user_signed_in? || @question.student == current_user
     else
       redirect_to klass_path(@question.klass), alert: "Seul l'auteur de la question ou le professeur de la classe peuvent supprimer une question"
     end

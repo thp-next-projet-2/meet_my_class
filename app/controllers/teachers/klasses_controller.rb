@@ -3,6 +3,7 @@
 class Teachers::KlassesController < ApplicationController # rubocop:disable Style/ClassAndModuleChildren
   # before_action :set_klass, only: %i[edit update show destroy]
   before_action :authenticate_user!, only: %i[new create edit update destroy]
+  rescue_from Pundit::NotAuthorizedError, with: :redirect_unauthorized
 
   def index
     # @klasses = Klass.all
@@ -11,6 +12,7 @@ class Teachers::KlassesController < ApplicationController # rubocop:disable Styl
 
   def show
     @klass = Klass.find(params[:id])
+    authorize([:teacher, @klass], :owner?)
     # for attendances
     @attendance = Attendance.new
     @invitations = Attendance.where(klass: @klass, status: false)
@@ -59,5 +61,10 @@ class Teachers::KlassesController < ApplicationController # rubocop:disable Styl
 
   def klass_params
     params.require(:klass).permit(:title, :description, :teacher_id)
+  end
+
+  def redirect_unauthorized
+    flash[:alert] = "Vous ne donnez pas cette classe"
+    redirect_to root_path
   end
 end
