@@ -93,7 +93,7 @@ Rails.application.configure do
   config.active_record.dump_schema_after_migration = false
 
   #Mailer
-  config.action_mailer.default_url_options = { :host => 'meet-my-class-staging.herokuapp.com' }
+  config.action_mailer.default_url_options = { :host => ENV["HOST"] }
   ActionMailer::Base.smtp_settings = {
     :user_name => ENV["SENDGRID_ID"],
     :password => ENV["SENDGRID_PWD"],
