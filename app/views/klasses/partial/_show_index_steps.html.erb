@@ -2,11 +2,11 @@
   <td><%= step.name %></td>
   <td>
     <div class="progress-w-percent mb-0">
-      <span class="progress-value"><%= (step.progressions.count*100/@klass.attendances.count) %>% </span>
+      <span class="progress-value"><%= progression_percentage(step) %>% </span>
       <div class="progress progress-sm">
         <div class="progress-bar bg-success" role="progressbar"
-          style="width: <%= (step.progressions.count*100/@klass.attendances.count) %>%;"
-          aria-valuenow="<%= (step.progressions.count*100/@klass.attendances.count) %>" aria-valuemin="0"
+          style="width: <%= progression_percentage(step) %>%;"
+          aria-valuenow="<%= progression_percentage(step) %>" aria-valuemin="0"
           aria-valuemax="100"></div>
       </div>
     </div>
