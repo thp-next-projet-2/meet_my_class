@@ -10,8 +10,9 @@
 require 'faker'
 ActionMailer::Base.perform_deliveries = false
 
+# Create 2 teachers with 2 klasses each
 2.times do |i|
-  teacher = Teacher.create!(
+  teacher = User.create!(
     email: "teacher#{i + 1}@yopmail.com",
     password: 'password'
   )
@@ -24,22 +25,44 @@ ActionMailer::Base.perform_deliveries = false
   end
 end
 
-Klass.all.each do |klass|
-  3.times do
-    Step.create!(
-      klass_id: klass.id,
-      name: Faker::RockBand.name
+# Create 2 users with a klass and attendances
+2.times do |i|
+  user = User.create!(
+    email: "user#{i + 1}@yopmail.com",
+    password: 'password'
+  )
+  Klass.create!(
+    title: Faker::Music::RockBand.name,
+    description: Faker::Quote.yoda,
+    teacher: user
+  )
+  Attendance.create!(
+    student: user,
+    klass_id: Random.rand(1..4)
+  )
+end
+
+# Create 10 students attending from 1 to 4 klasses
+10.times do |i|
+  student = User.create!(
+    email: "student#{i + 1}@yopmail.com",
+    password: 'password'
+  )
+  Random.rand(1..3) do
+    Attendance.create!(
+      student: student,
+      klass_id: Faker::Number.unique.within(1..6)
     )
   end
 end
 
-10.times do |i|
-  student = Student.create!(
-    email: "student#{i + 1}@yopmail.com",
-    password: 'password'
-  )
-  Attendance.create!(
-    student: student,
-    klass_id: Random.rand(1..4)
-  )
+# Create 3 steps per class
+Klass.all.each do |klass|
+  3.times do
+    Step.create!(
+      klass_id: klass.id,
+      name: Faker::Music::RockBand.name,
+      description: Faker::Quote.yoda
+    )
+  end
 end
