@@ -21,10 +21,10 @@
             <%@questions.each do |question| %>
             <%= question.description%>
             <%= form_for [@klass, question,question.upvotes.build] do |f| %>
-            <%= f.hidden_field :student_id, :value => current_student.id %>
-                <div class="row">    
+            <%= f.hidden_field :student_id, :value => current_user.id %>
+                <div class="row">
                     <div class="col"><%= f.submit "Voter !", class: "btn btn-large btn-primary" %></div>
-                <% end %> 
+                <% end %>
                 <div class="col"><%= question.upvotes.count%> <%= (question.upvotes.count) == 1 ? 'Vote': 'Votes'%> <p></div>
                <div class="col"><%= button_to 'Suppprimer', klass_question_path(@klass, question.id), :data => {:confirm => 'êtes vous sûr ?'}, :method => "delete", class:'btn-secondary'%></div>
             </div>

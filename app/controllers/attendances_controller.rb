@@ -30,7 +30,7 @@ class AttendancesController < ApplicationController
   end
 
   def update
-    @attendance = Attendance.find_by(klass: @klass, student: current_student)
+    @attendance = Attendance.find_by(klass: @klass, student: current_user)
     @attendance.update(status: true)
 
     flash[:notice] = "Invitation accepté"

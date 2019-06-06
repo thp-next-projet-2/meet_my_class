@@ -3,24 +3,18 @@
     <h5 class="btn btn-success mr-2">This website is in contruction soory for the incovenience</h5>
   </div>
 </section>
-<!-- ! This is temporary code -->
-<code>
   <p>This should actually host a login form that redirects to the dashboard for users (now in v2:
     students/teachers/both).</p>
 
-    <% if current_teacher%>
+    <% if current_user%>
   <h2>Professeurs</h2>
     <ul>
-        <%= link_to 'Espace de travail', teacher_path(current_teacher) %>
+        <%= link_to 'Espace de travail', teacher_path(current_user) %>
     </ul>
-    <% end %>
 
-
-    <% if current_student%>
   <h2>Étudiants</h2>
     <ul>
       <%= link_to 'Temple du savoir', klasses_path %>
     </ul>
     <% end %>
-</code>
 

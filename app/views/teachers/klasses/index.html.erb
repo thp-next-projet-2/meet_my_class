@@ -1,15 +1,15 @@
 
 <div class=flex>
-<div class=container center; style= border-style:solid;> 
+<div class=container center; style= border-style:solid;>
 <% @klasses.each do |k| %>
 <%= k.title%>  <%= link_to 'Détail de la classe', klass_path(k) %><p>
 <% end %>
 
 
 <div class="container mt-4 col-6">
-  <% if current_teacher %>
+  <% if current_user %>
     <% @klasses.each do |k| %>
-    <%= k.title%> 
+    <%= k.title%>
     <%= link_to 'Détail de la classe', klass_path(k) %><p>
     <%= link_to "Edit",edit_klass_path(k.id), class:'btn btn-success' %>
     <%= link_to "Delete",klass_path(k.id), class:'btn btn-danger', method: :delete %>
@@ -21,7 +21,7 @@
   </div>
 <% end%>
 
-<div class=container style= border-style:solid  > 
+<div class=container style= border-style:solid  >
 <%= link_to 'se connecter', new_student_session_path %><p>
 <%= link_to 'se deconnecter', destroy_student_session_path, method: :delete%>
 </div>
