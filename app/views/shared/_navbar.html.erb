@@ -12,7 +12,7 @@
 			<li class="nav-item dropdown megamenu">
 
 
-				<% if current_teacher %>
+				<% if current_user %>
 				<!-- Je suis un Prof -->
 			<li class="nav-item dropdown">
 				<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true"
@@ -20,28 +20,14 @@
 					Professeur
 				</a>
 				<div class="dropdown-menu" aria-labelledby="navbarDropdown">
-					<%= link_to 'Déconnexion', destroy_teacher_session_path, method: :delete, class:"dropdown-item" %>
+					<%= link_to 'Déconnexion', destroy_user_session_path, method: :delete, class:"dropdown-item" %>
 					<div class="dropdown-divider"></div>
-					<%= link_to ' Paramètres',  edit_teacher_registration_path, class:"dropdown-item" %>
+					<%= link_to ' Paramètres',  edit_user_registration_path, class:"dropdown-item" %>
 					<%= link_to 'Nouveau cours',  new_teachers_klass_path, class:"dropdown-item" %>
 				</div>
 			</li>
 			<!-- Je suis un Prof -->
 
-			<% elsif current_student %>
-			<!-- Je suis un Elève -->
-			<li class="nav-item dropdown">
-				<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true"
-				 aria-expanded="false">
-					Elève
-				</a>
-				<div class="dropdown-menu" aria-labelledby="navbarDropdown">
-					<%= link_to 'Déconnexion', destroy_student_session_path, method: :delete, class:"dropdown-item" %>
-					<div class="dropdown-divider"></div>
-					<%= link_to ' Paramètres',  edit_student_registration_path, class:"dropdown-item" %>
-				</div>
-			</li>
-			<!-- Je suis un Elève -->
 			<%else%>
 
 
@@ -50,24 +36,12 @@
 			<li class="nav-item dropdown">
 				<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true"
 				 aria-expanded="false">
-					Elève
+					Utilisateur
 				</a>
 				<div class="dropdown-menu" aria-labelledby="navbarDropdown">
-					<%= link_to 'Inscription', new_student_registration_path, class:"dropdown-item" %>
+					<%= link_to 'Inscription', new_user_registration_path, class:"dropdown-item" %>
 					<div class="dropdown-divider"></div>
-					<%= link_to 'Connexion ', new_student_session_path, class:"dropdown-item" %>
-				</div>
-
-			</li>
-			<li class="nav-item dropdown">
-				<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true"
-				 aria-expanded="false">
-					Professeur
-				</a>
-				<div class="dropdown-menu" aria-labelledby="navbarDropdown">
-					<%= link_to 'Inscription', new_teacher_registration_path, class:"dropdown-item" %>
-					<div class="dropdown-divider"></div>
-					<%= link_to 'Connexion ', new_teacher_session_path, class:"dropdown-item" %>
+					<%= link_to 'Connexion ', new_user_session_path, class:"dropdown-item" %>
 				</div>
 			</li>
 			<!-- Je suis un visiteur -->

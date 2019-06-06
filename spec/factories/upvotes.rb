@@ -19,7 +19,7 @@
 
 FactoryBot.define do
   factory :upvote do
-    student { FactoryBot.create(:student) }
+    student { FactoryBot.create(:user) }
     question { FactoryBot.create(:question) }
   end
 end

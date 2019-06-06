@@ -18,7 +18,7 @@
 #
 
 class Upvote < ApplicationRecord
-  belongs_to :student
+  belongs_to :student, class_name: 'User', foreign_key: 'student_id', inverse_of: :upvotes
   belongs_to :question
 
   # validates :student_id, uniqueness: { scope: :question_id }

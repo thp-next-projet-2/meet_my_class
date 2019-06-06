@@ -13,9 +13,12 @@
  *# require_tree .
  *= require_self
  */
- @import "functions.scss";
- @import "variables.scss";
- @import "bootstrap";  
+  @import "functions.scss";
+  @import "variables.scss";
+  @import "bootstrap";
+  @import "css/app-dark.css";
+  @import "css/app-dark.min.css";
+
 
  .container {
     display: flex;

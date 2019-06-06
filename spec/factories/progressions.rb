@@ -19,7 +19,7 @@
 
 FactoryBot.define do
   factory :progression do
-    student { FactoryBot.create(:student) }
+    student { FactoryBot.create(:user) }
     step { FactoryBot.create(:step) }
     completed { false }
 
