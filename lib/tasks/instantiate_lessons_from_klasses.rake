@@ -13,14 +13,14 @@ namespace :instantiate_lessons do
 
     ActiveRecord::Base.transaction do
       Klass.all.each do |k|
-        Lesson.new(
+        lesson = Lesson.new(
           title: k.title,
           teacher_id: k.teacher_id,
           description: k.description,
           created_at: k.created_at,
           updated_at: k.updated_at,
         )
-        user.save!
+        lesson.save!
       end
     end
 
