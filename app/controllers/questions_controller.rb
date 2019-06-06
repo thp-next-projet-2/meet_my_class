@@ -11,7 +11,7 @@ class QuestionsController < ApplicationController
 
   def create
     @question_new = @klass.questions.create(question_params)
-    @question_new.student_id = current_student.id
+    @question_new.student_id = current_user.id
     if @question_new.save
       redirect_to klass_path(@klass)
       flash[:success] = "Votre question a bien été enregistrée"
@@ -51,7 +51,7 @@ class QuestionsController < ApplicationController
   end
 
   def rightful_author_question
-    if teacher_signed_in? || @question.student == current_student
+    if teacher_signed_in? || @question.student == current_user
     else
       redirect_to klass_path(@question.klass), alert: "Seul l'auteur de la question ou le professeur de la classe peuvent supprimer une question"
     end

@@ -2,11 +2,11 @@
 
 class Teachers::KlassesController < ApplicationController # rubocop:disable Style/ClassAndModuleChildren
   # before_action :set_klass, only: %i[edit update show destroy]
-  before_action :authenticate_teacher!, only: %i[new create edit update destroy]
+  before_action :authenticate_user!, only: %i[new create edit update destroy]
 
   def index
     # @klasses = Klass.all
-    @klasses = current_teacher.klasses
+    @klasses = current_user.given_klasses
   end
 
   def show
@@ -26,9 +26,9 @@ class Teachers::KlassesController < ApplicationController # rubocop:disable Styl
   end
 
   def create
-    if current_teacher
+    if current_user
       @klass = Klass.create(klass_params)
-      @klass.teacher_id = current_teacher.id
+      @klass.teacher_id = current_user.id
     else
       redirect_to root_path, alert: "Un problème est servenu veuillez réessayer"
     end

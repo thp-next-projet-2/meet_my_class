@@ -2,7 +2,7 @@
 
 class KlassesController < ApplicationController
   def index
-    @klasses = current_student.klasses
+    @klasses = current_user.klasses
     @klasses = Klass.all
   end
 
@@ -19,7 +19,7 @@ class KlassesController < ApplicationController
     @attendances = Attendance.where(klass: @klass, status: true)
 
     # for student class
-    @attendance = Attendance.find_by(klass: @klass, student: current_student)
+    @attendance = Attendance.find_by(klass: @klass, student: current_user)
 
     # for step
     @steps = @klass.steps

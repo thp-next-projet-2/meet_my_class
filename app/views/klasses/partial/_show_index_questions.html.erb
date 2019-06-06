@@ -8,7 +8,7 @@
   </td>
   <td>
     <%= form_for [@klass, question,question.upvotes.build] do |f| %>
-    <%= f.hidden_field :student_id, :value => current_student.id %>
+    <%= f.hidden_field :student_id, :value => current_user.id %>
       <%= f.submit "Voter !", class: "btn btn-sm btn-success" %>
       <% end %>
   </td>
