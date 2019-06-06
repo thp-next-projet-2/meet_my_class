@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_06_04_135048) do
+ActiveRecord::Schema.define(version: 2019_06_06_125435) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -19,11 +19,11 @@ ActiveRecord::Schema.define(version: 2019_06_04_135048) do
     t.datetime "invited_at"
     t.datetime "connected_at"
     t.bigint "student_id"
-    t.bigint "klass_id"
     t.boolean "status", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["klass_id"], name: "index_attendances_on_klass_id"
+    t.bigint "lesson_id"
+    t.index ["lesson_id"], name: "index_attendances_on_lesson_id"
     t.index ["student_id"], name: "index_attendances_on_student_id"
   end
 
@@ -36,6 +36,22 @@ ActiveRecord::Schema.define(version: 2019_06_04_135048) do
     t.bigint "user_id"
     t.index ["teacher_id"], name: "index_klasses_on_teacher_id"
     t.index ["user_id"], name: "index_klasses_on_user_id"
+  end
+
+  create_table "lessons", force: :cascade do |t|
+    t.string "title"
+    t.text "description"
+    t.bigint "teacher_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["teacher_id"], name: "index_lessons_on_teacher_id"
+  end
+
+  create_table "lessons_steps", id: false, force: :cascade do |t|
+    t.bigint "lesson_id", null: false
+    t.bigint "step_id", null: false
+    t.index ["lesson_id"], name: "index_lessons_steps_on_lesson_id"
+    t.index ["step_id"], name: "index_lessons_steps_on_step_id"
   end
 
   create_table "progressions", force: :cascade do |t|
@@ -131,6 +147,7 @@ ActiveRecord::Schema.define(version: 2019_06_04_135048) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "attendances", "lessons"
   add_foreign_key "klasses", "users"
   add_foreign_key "questions", "klasses"
   add_foreign_key "questions", "users"

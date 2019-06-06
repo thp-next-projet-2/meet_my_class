@@ -24,4 +24,7 @@ class Step < ApplicationRecord
 
   has_many :progressions, dependent: :destroy
   # has_many :students, through: :progressions
+
+  has_many :lessons_steps, dependent: :destroy
+  has_many :lessons, through: :lessons_steps
 end
