@@ -38,7 +38,7 @@ class User < ApplicationRecord
   # As student
   has_many :attendances,
            foreign_key: 'student_id',
-           inverse_of: :students,
+           inverse_of: :student,
            dependent: :destroy
 
   has_many :klasses,

@@ -22,7 +22,12 @@
 class Attendance < ApplicationRecord
   after_create :invitation_to_klass
 
-  belongs_to :student, class_name: 'User', foreign_key: 'student_id', inverse_of: :attendances
+  belongs_to :student,
+             class_name: 'User',
+             foreign_key: 'student_id',
+             inverse_of: :attendances,
+             dependent: :destroy
+
   belongs_to :klass
 
   def invitation_to_klass

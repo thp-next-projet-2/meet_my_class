@@ -32,7 +32,9 @@ class Klass < ApplicationRecord
              optional: true,
              inverse_of: :given_klasses
 
-  has_many :attendances, dependent: :destroy
+  has_many :attendances,
+           dependent: :destroy
+
   has_many :students,
            class_name: 'User',
            source: :student,

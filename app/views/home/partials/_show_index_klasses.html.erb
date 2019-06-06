@@ -14,7 +14,7 @@
       <%= klass.teacher.email %>
     </td>
     <td>
-        <%= @student.attendances.find_by(klass_id: klass.id).connected_at %>
+        <%= current_user.attendances.find_by(klass_id: klass.id).connected_at.strftime("%F") %>
     </td>
     <td>
       <!-- * TODO: real value * -->

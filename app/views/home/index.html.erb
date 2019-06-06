@@ -18,3 +18,97 @@
     </ul>
     <% end %>
 
+    <% if signed_in? %>
+    <div class="content-page">
+        <div class="content">
+
+          <!-- Start Teacher -->
+          <div class="container-fluid">
+
+              <div class="row">
+                <div class="col-12">
+                  <div class="card">
+                    <div class="card-body">
+                      <div class="row mb-2">
+                        <div class="col-sm-12 d-flex justify-content-between align-items-center">
+                          <h2>Vous donnez</h2>
+                          <%= link_to "Créer une classe", new_teachers_klass_path, class: "btn btn-primary" %>
+                        </div>
+                      </div>
+
+                      <div class="table-responsive">
+                        <table class="table table-centered w-100 dt-responsive nowrap" id="products-datatable">
+                          <thead class="thead-light">
+                            <tr>
+                              <th class="all" style="width: 20px;">
+                                <div class="custom-control custom-checkbox">
+                                  <input type="checkbox" class="custom-control-input" id="customCheck1">
+                                  <label class="custom-control-label" for="customCheck1">&nbsp;</label>
+                                </div>
+                              </th>
+                              <th class="all">Classe</th>
+                              <th>Professeur</th>
+                              <th>Progression</th>
+                              <th>Questions</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <%= render partial: 'home/partials/show_index_given_klasses', locals: { student: @student }, collection: @given_klasses, as: 'klass' %>
+                          </tbody>
+                        </table>
+                      </div>
+                    </div> <!-- end card-body-->
+                  </div> <!-- end card-->
+                </div> <!-- end col -->
+              </div>
+              <!-- end row -->
+
+            </div> <!-- container -->
+
+            <!-- Start Student -->
+          <div class="container-fluid">
+
+            <div class="row">
+              <div class="col-12">
+                <div class="card">
+                  <div class="card-body">
+                    <div class="row mb-2">
+                      <div class="col-sm-12">
+                        <h2>Vous suivez</h2>
+                      </div>
+                    </div>
+
+                    <div class="table-responsive">
+                      <table class="table table-centered w-100 dt-responsive nowrap" id="products-datatable">
+                        <thead class="thead-light">
+                          <tr>
+                            <th class="all" style="width: 20px;">
+                              <div class="custom-control custom-checkbox">
+                                <input type="checkbox" class="custom-control-input" id="customCheck1">
+                                <label class="custom-control-label" for="customCheck1">&nbsp;</label>
+                              </div>
+                            </th>
+                            <th class="all">Classe</th>
+                            <th>Professeur</th>
+                            <th>Débuté</th>
+                            <th>Progression</th>
+                            <th>Questions</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <%= render partial: 'home/partials/show_index_klasses', locals: { student: @student }, collection: @klasses, as: 'klass' %>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div> <!-- end card-body-->
+                </div> <!-- end card-->
+              </div> <!-- end col -->
+            </div>
+            <!-- end row -->
+
+          </div> <!-- container -->
+
+        </div> <!-- content -->
+        <% else %>
+        Connectez-vous
+        <% end %>
