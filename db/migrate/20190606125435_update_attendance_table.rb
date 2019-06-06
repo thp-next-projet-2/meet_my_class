@@ -2,7 +2,7 @@
 
 class UpdateAttendanceTable < ActiveRecord::Migration[5.2]
   def change
-    remove_index :attendances, :klass_id
-    add_reference :attendances, :lesson, foreign_key: true
+    remove_reference :attendances, :klass, index: true
+    add_reference :attendances, :lesson, index: true, foreign_key: true
   end
 end

@@ -10,13 +10,17 @@
 #  status       :boolean          default(FALSE)
 #  created_at   :datetime         not null
 #  updated_at   :datetime         not null
-#  klass_id     :bigint
+#  lesson_id    :bigint
 #  student_id   :bigint
 #
 # Indexes
 #
-#  index_attendances_on_klass_id    (klass_id)
+#  index_attendances_on_lesson_id   (lesson_id)
 #  index_attendances_on_student_id  (student_id)
+#
+# Foreign Keys
+#
+#  fk_rails_...  (lesson_id => lessons.id)
 #
 
 class Attendance < ApplicationRecord
