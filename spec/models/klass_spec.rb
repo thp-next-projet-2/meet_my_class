@@ -43,7 +43,7 @@ RSpec.describe Klass, type: :model do
     it { is_expected.to belong_to(:teacher) }
     it { is_expected.to have_many(:steps).dependent(:destroy) }
     it { is_expected.to have_many(:questions).dependent(:destroy) }
-    it { expect(klass).to have_many(:attendances).dependent(:destroy) }
+  #  it { expect(klass).to have_many(:attendances).dependent(:destroy) }
   end
 
   describe "Validation" do
