@@ -59,4 +59,6 @@ class User < ApplicationRecord
            foreign_key: 'teacher_id',
            inverse_of: 'teacher',
            dependent: :destroy
+
+  has_many :lessons, foreign_key: 'teacher_id', inverse_of: :teacher, dependent: :destroy
 end
