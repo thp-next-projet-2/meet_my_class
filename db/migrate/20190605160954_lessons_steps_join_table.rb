@@ -3,8 +3,8 @@
 class LessonsStepsJoinTable < ActiveRecord::Migration[5.2]
   def change
     create_join_table :lessons, :steps do |t|
-      t.index :lessons_id
-      t.index :steps_id
+      t.index :lesson_id
+      t.index :step_id
     end
   end
 end
