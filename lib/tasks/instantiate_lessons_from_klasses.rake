@@ -27,3 +27,28 @@ namespace :instantiate_lessons do
     log " All done now!"
   end
 end
+
+namespace :attendance_lessons_id do
+  desc "Change klass_id to Lesson_id"
+
+  def log(msg)
+    puts msg
+    Rails.logger.info(msg)
+  end
+
+  task attedances: :environment do
+    log "Going to move #{Attendance.count} attendances"
+
+    ActiveRecord::Base.transaction do
+      Attendance.all.each do |k|
+        lesson = Attendance.update(
+          lesson_id: k.klass_id,
+          
+        )
+        attedance.save!
+      end
+    end
+
+    log " All done now!"
+  end
+end
