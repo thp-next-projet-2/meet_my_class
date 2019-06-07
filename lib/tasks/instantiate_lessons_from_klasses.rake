@@ -41,9 +41,8 @@ namespace :attendance_lessons_id do
 
     ActiveRecord::Base.transaction do
       Attendance.all.each do |k|
-        lesson = Attendance.update(
-          lesson_id: k.klass_id,
-          
+        k.update(
+          lesson_id: klass_id,
         )
         attedance.save!
       end
