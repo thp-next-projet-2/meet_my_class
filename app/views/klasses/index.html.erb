@@ -1,14 +1,34 @@
-
-<div>
-    <% @klasses.each do |k| %>
-      <%= k.title%>
-      <%= link_to 'Détail de la classe', klass_path(k) %><p>
-    <% end %>
-</div>
-
-
-
-
   <div class="col-4 mt-4 mb-8"><div>
     <%= render partial: "klasses/partial/student_attendance" %></div>
   </div>
+
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="card">
+                                    <div class="card-body">
+
+                                        <h4 class="header-title">Vos différents cours</h4>
+
+                                        <table id="datatable-buttons" class="table table-striped dt-responsive nowrap" width="100%">
+                                            <thead>
+                                                <tr>
+                                                
+                                                    <th>Tilte</th>
+                                                    <th>détail de la classee</th>
+                                                </tr>
+                                            </thead>
+                                        
+                                        
+                                            <tbody>
+                                              <% @klasses.each do |k| %>
+                                                <tr>
+                                                    <td> <%= k.title%> </td>
+                                                    <td> <%= link_to 'Détail de la classe', klass_path(k) %> </td>
+                                                </tr>
+                                                <% end %>
+                                            </tbody>
+                                        </table>
+                                    </div> <!-- end card body-->
+                                </div> <!-- end card -->
+                            </div><!-- end col-->
+                        </div>
