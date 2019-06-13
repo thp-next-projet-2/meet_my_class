@@ -12,7 +12,7 @@ class StepsController < ApplicationController
     respond_to do |format|
       if @step.save
         format.html { redirect_to teachers_klass_path(@klass), succes: "Etape créer" }
-        format.js   {}
+        format.js { }
       else
         format.html { render :new, alert: "un souci !" }
         format.json { render json: @step.errors, status: :unprocessable_entity }
