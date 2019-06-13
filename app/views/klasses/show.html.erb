@@ -75,7 +75,15 @@
           <div class="row mt-5">
             <h3>Questions</h3>
           <div class="table-responsive">
-              <%= link_to "Poser une question", new_klass_question_path(@klass), class: "btn btn-success m-2" %>
+               <div class="col", style="padding: 10px 50px 20px";>
+                <%= form_with [@klass, @question_new] do |f|%>
+                <%= f.text_area :description, placeholder: 'Description...', class:"form-control form-control-lg textarea-autogrow"%>
+                  
+                <div class="row", style="justify-content: center; padding: 10px 50px 20px";>
+                  <%= f.submit 'Ajouter', class:"btn btn-success" %>
+                </div>
+                <% end %>
+              </div>
               <table class="table table-bordered table-centered mb-0">
               <thead class="thead-light">
                 <tr>
