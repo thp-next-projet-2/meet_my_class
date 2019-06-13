@@ -18,9 +18,9 @@
   </td>
   <td>
     <!-- * TODO: real value * -->
-    <%= Random.rand(1..100) %>%
+    <%= klass_progression_percentage(klass) %>%
   </td>
   <td>
-    <%= Random.rand(0..5) %>
+    <%= klass.questions.count %>
   </td>
 </tr>
