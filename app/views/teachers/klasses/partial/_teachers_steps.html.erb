@@ -12,7 +12,7 @@
 				</div>
 			<% end %>
 			<%= link_to "Mettre à jour", edit_klass_step_path(@klass, step), class:"btn btn-success" %>
-			<%= link_to "Supprimé", klass_step_path(@klass, step), method: :delete, class:"btn btn-danger" %>
+			<%= link_to "Supprimé", klass_step_path(@klass, step), method: :delete, remote: true, class:"btn btn-danger" %>
     </div><hr>
   <% end %>
 </div>
