@@ -3,7 +3,7 @@
 class KlassesController < ApplicationController
   def index
     @klasses = current_student.klasses
-    @klasses = Klass.all
+    # @klasses = Klass.all
   end
 
   def show

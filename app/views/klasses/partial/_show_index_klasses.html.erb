@@ -1,0 +1,26 @@
+<tr>
+  <td>
+    <div class="custom-control custom-checkbox">
+      <input type="checkbox" class="custom-control-input" id="customCheck2">
+      <label class="custom-control-label" for="customCheck2">&nbsp;</label>
+    </div>
+  </td>
+  <td>
+    <p class="m-0 d-inline-block align-middle font-16">
+      <%= link_to klass.title, klass_path(klass.id) %>
+    </p>
+  </td>
+  <td>
+    <%= klass.teacher.email %>
+  </td>
+  <td>
+    <%= current_student.attendances.find_by(klass_id: klass.id).connected_at %>
+  </td>
+  <td>
+    <!-- * TODO: real value * -->
+    <%= Random.rand(1..100) %>%
+  </td>
+  <td>
+    <%= Random.rand(0..5) %>
+  </td>
+</tr>
