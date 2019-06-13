@@ -8,10 +8,15 @@ class StepsController < ApplicationController
   def create
     @step = @klass.steps.create(step_params)
     @step.name = params[:step][:name]
-    if @step.save
-      redirect_to teachers_klass_path(@klass), succes: "Etape créer"
-    else
-      flash[:alert] = "Echec lors de la création de l'étape"
+
+    respond_to do |format|
+      if @step.save
+        format.html { redirect_to teachers_klass_path(@klass), succes: "Etape créer" }
+        format.js   {}
+      else
+        format.html { render :new, alert: "un souci !" }
+        format.json { render json: @step.errors, status: :unprocessable_entity }
+      end
     end
   end
 

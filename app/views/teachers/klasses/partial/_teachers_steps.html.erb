@@ -20,7 +20,7 @@
 <div class="container mt-5">
 	<div class="form-group row">    
 		<div class="col-sm-10">
-			<%= form_for @step, url: klass_steps_path(@klass), method: :post do |f| %>
+			<%= form_for @step, url: klass_steps_path(@klass), method: :post, remote: true do |f| %>
 					<%= f.text_field :name, class:"form-control form-control-lg", id:"colFormLabelLg", placeholder:"Titre"%>
 					<%= f.text_field :description, class:"form-control", id:"colFormLabel", placeholder:"Description" %>
 					<%= f.submit class:"btn btn-primary mb-2" %>
