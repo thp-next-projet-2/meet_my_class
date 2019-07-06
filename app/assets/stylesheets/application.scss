@@ -13,35 +13,35 @@
  *# require_tree .
  *= require_self
  */
-  @import "functions.scss";
-  @import "variables.scss";
+//   @import "functions.scss";
+//   @import "variables.scss";
   @import "bootstrap";
   @import "css/app-dark.css";
   @import "css/app-dark.min.css";
 
 
- .container {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    background-color: #f1f1f1;
- }
+//  .container {
+//     display: flex;
+//     flex-direction: row;
+//     align-items: center;
+//     background-color: #f1f1f1;
+//  }
 
- .Divalert {
-   opacity: 0.70;
-   width: 30%;
-   margin-top: 5%;
-   position: fixed;
-   top: 0;
-   left: 65%;
-   z-index: 900;
-}
+//  .Divalert {
+//    opacity: 0.70;
+//    width: 30%;
+//    margin-top: 5%;
+//    position: fixed;
+//    top: 0;
+//    left: 65%;
+//    z-index: 900;
+// }
 
-.Divheader {
-   position: fixed;
-   top: 0;
-}
+// .Divheader {
+//    position: fixed;
+//    top: 0;
+// }
 
-.Divalert, .Divheader {
-   position: absolute;	
-}
+// .Divalert, .Divheader {
+//    position: absolute;	
+// }
