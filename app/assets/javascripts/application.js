@@ -21,11 +21,6 @@
 //= require js/app.js
 //= require js/app.min.js
 
-// window.setTimeout(function () {
-//     $(".alert").fadeTo(500, 0).slideUp(500, function () {
-//       $(this).remove();
-//     });
-//   }, 5000);
 
 import "js/app.min.js";
 
