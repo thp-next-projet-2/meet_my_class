@@ -27,9 +27,7 @@
 //     });
 //   }, 5000);
 
-import "js/app.js";
 import "js/app.min.js";
-import "js/app.min.js.map";
 
 import "js/ui/component.chat.js/";
 import "js/ui/component.dragula.js";

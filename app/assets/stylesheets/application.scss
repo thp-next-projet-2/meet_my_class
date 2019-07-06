@@ -13,11 +13,22 @@
  *# require_tree .
  *= require_self
  */
-//   @import "functions.scss";
-//   @import "variables.scss";
+ 
   @import "bootstrap";
-  @import "css/app-dark.css";
-  @import "css/app-dark.min.css";
+
+  @import "css/app.min.scss";
+  @import "css/app-dark.min.scss";
+  @import "css/icons.min.scss";
+
+  @import "css/vendor/britecharts.min.scss";
+  @import "css/vendor/buttons.bootstrap4.scss";
+  @import "css/vendor/dataTables.bootstrap4.scss";
+  @import "css/vendor/fullcalendar.min.scss";
+  @import "css/vendor/jquery-jvectormap-1.2.2.scss";
+  @import "css/vendor/responsive.bootstrap4.scss";
+  @import "css/vendor/select.bootstrap4.scss";
+  @import "css/vendor/simplemde.min.scss";
+  @import "css/vendor/summernote-bs4.scss";
 
 
 //  .container {
