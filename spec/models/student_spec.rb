@@ -57,9 +57,11 @@ RSpec.describe Student, type: :model do
     it { expect(student).to have_many(:upvotes).dependent(:destroy) }
   end
 
-  # describe "Validations" do
-  #   it { is_expected.to validate_uniqueness_of(:email).ignoring_case_sensitivity }
-  # end
+  describe "Validations" do
+    # it { is_expected.to validate_uniqueness_of(:email).ignoring_case_sensitivity }
+    it { is_expected.to validate_presence_of(:first_name) }
+    it { is_expected.to validate_presence_of(:last_name) }
+  end
 
   describe 'Factories' do
     context 'with valid attributes' do

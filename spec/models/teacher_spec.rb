@@ -45,6 +45,8 @@ RSpec.describe Teacher, type: :model do
 
   describe "Validations" do
     it { is_expected.to validate_uniqueness_of(:email).ignoring_case_sensitivity }
+    it { is_expected.to validate_presence_of(:first_name) }
+    it { is_expected.to validate_presence_of(:last_name) }
   end
 
   describe 'Factories' do

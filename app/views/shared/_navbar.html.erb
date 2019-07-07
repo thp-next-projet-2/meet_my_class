@@ -1,78 +1,100 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-	<%= link_to "Meet My Class", root_path, class:"navbar-brand" %>
-	<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-	 aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-		<span class="navbar-toggler-icon"></span>
-	</button>
+<!-- Begin page -->
+<div class="wrapper">
 
-	<div class="collapse navbar-collapse" id="navbarSupportedContent">
-		<ul class="navbar-nav mr-auto">
+                    <!-- Topbar Start -->
+                    <div class="navbar-custom">
+                        <ul class="list-unstyled topbar-right-menu float-right mb-0">
 
-
-			<li class="nav-item dropdown megamenu">
-
-
-				<% if current_teacher %>
-				<!-- Je suis un Prof -->
-			<li class="nav-item dropdown">
-				<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true"
-				 aria-expanded="false">
-					Professeur
-				</a>
-				<div class="dropdown-menu" aria-labelledby="navbarDropdown">
-					<%= link_to 'Déconnexion', destroy_teacher_session_path, method: :delete, class:"dropdown-item" %>
-					<div class="dropdown-divider"></div>
-					<%= link_to ' Paramètres',  edit_teacher_registration_path, class:"dropdown-item" %>
-					<%= link_to 'Nouveau cours',  new_teachers_klass_path, class:"dropdown-item" %>
-				</div>
-			</li>
-			<!-- Je suis un Prof -->
-
-			<% elsif current_student %>
-			<!-- Je suis un Elève -->
-			<li class="nav-item dropdown">
-				<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true"
-				 aria-expanded="false">
-					Elève
-				</a>
-				<div class="dropdown-menu" aria-labelledby="navbarDropdown">
-					<%= link_to 'Déconnexion', destroy_student_session_path, method: :delete, class:"dropdown-item" %>
-					<div class="dropdown-divider"></div>
-					<%= link_to ' Paramètres',  edit_student_registration_path, class:"dropdown-item" %>
-				</div>
-			</li>
-			<!-- Je suis un Elève -->
-			<%else%>
+                        <li class="dropdown notification-list">
+                            <a class="nav-link dropdown-toggle nav-user arrow-none mr-0" data-toggle="dropdown" id="topbar-userdrop" href="#" role="button" aria-haspopup="true"
+                                aria-expanded="false">
+                                <span class="account-user-avatar"> 
+                                    <i class="fas fa-user-shield fa-3x"></i>
+                                </span>
+                            </a>
 
 
+                            <div class="dropdown-menu dropdown-menu-right dropdown-menu-animated topbar-dropdown-menu profile-dropdown" aria-labelledby="topbar-userdrop">
+                                    <% if current_teacher %>
+                                <!-- Je suis un Prof -->
 
-			<!-- Je suis un visiteur -->
-			<li class="nav-item dropdown">
-				<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true"
-				 aria-expanded="false">
-					Elève
-				</a>
-				<div class="dropdown-menu" aria-labelledby="navbarDropdown">
-					<%= link_to 'Inscription', new_student_registration_path, class:"dropdown-item" %>
-					<div class="dropdown-divider"></div>
-					<%= link_to 'Connexion ', new_student_session_path, class:"dropdown-item" %>
-				</div>
+                                <!-- item-->
+                                <div class=" dropdown-header noti-title">
+                                    <h6 class="text-overflow m-0">Welcome !</h6>
+                                </div>
 
-			</li>
-			<li class="nav-item dropdown">
-				<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true"
-				 aria-expanded="false">
-					Professeur
-				</a>
-				<div class="dropdown-menu" aria-labelledby="navbarDropdown">
-					<%= link_to 'Inscription', new_teacher_registration_path, class:"dropdown-item" %>
-					<div class="dropdown-divider"></div>
-					<%= link_to 'Connexion ', new_teacher_session_path, class:"dropdown-item" %>
-				</div>
-			</li>
-			<!-- Je suis un visiteur -->
-			<%end%>
-		</ul>
+                                <!-- item-->
+                                <%= link_to 'My account ', edit_teacher_registration_path, class: "dropdown-item notify-item"%>
 
-	</div>
-</nav>
+                                <!-- item-->
+                                <%= link_to 'New class',  new_teachers_klass_path, class: "dropdown-item notify-item"%>
+
+                                <!-- item-->
+                                <%= link_to 'Logout', destroy_teacher_session_path, class: "dropdown-item notify-item"%>
+
+                                <% elsif current_student %>
+                                <!-- Je suis un Elève -->
+
+                                <!-- item-->
+                                <div class=" dropdown-header noti-title">
+                                    <h6 class="text-overflow m-0">Welcome !</h6>
+                                </div>
+
+                                <!-- item-->
+                                <%= link_to 'My account ', edit_student_registration_path, class: "dropdown-item notify-item"%>
+
+                                <!-- item-->
+                                <%= link_to 'Se my class',  root_path, class: "dropdown-item notify-item"%>
+
+                                <!-- item-->
+                                <%= link_to 'Logout', destroy_student_session_path, class: "dropdown-item notify-item"%>
+
+                                <%else%>
+
+                                <!-- Je suis un visiteur -->
+
+                                <!-- item-->
+                                <div class=" dropdown-header noti-title">
+                                    <h6 class="text-overflow m-0">Welcome !</h6>
+                                </div>
+                                <!-- item-->
+                                <%= link_to 'Sign in as teacher', new_teacher_session_path, class: "dropdown-item notify-item"%>
+                                
+                                <!-- item-->
+                                <%= link_to 'Sign up as teacher', new_teacher_registration_path, class: "dropdown-item notify-item"%>
+
+                                <!-- item-->
+                                <%= link_to 'Sign in as student', new_student_session_path, class: "dropdown-item notify-item"%>
+
+                                <!-- item-->
+                                <%= link_to 'Sign up as student', new_student_registration_path, class: "dropdown-item notify-item"%>
+
+                                <%end%>
+
+                            </div>
+                        </li>
+                    </ul>
+                    <!-- TODO : Search feature -->
+                    <button class="button-menu-mobile open-left disable-btn">
+                        <i class="fas fa-search"></i>
+                    </button>
+                    <div class="app-search">
+                        <form>
+                            <div class="input-group">
+                                <input type="text" class="form-control" placeholder="Search a class">
+                                <span class="fas fa-search"></span>
+                                <div class="input-group-append">
+                                    <button class="btn btn-primary" type="submit">Search</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+
+                </div>
+                <!-- / Topbar -->
+            </div>
+            <!-- / content -->
+        </div>
+
+</div>
+<!-- / wrapper -->

@@ -34,6 +34,7 @@ class Student < ApplicationRecord
          :trackable
 
   validates :email, uniqueness: { case_sensitive: false } # , format: { with: /\A[a-zA-Z0-9 _\.]*\z/ }
+  validates :first_name, :last_name, presence: true
 
   has_many :attendances, dependent: :destroy
   has_many :klasses, through: :attendances, dependent: :destroy
