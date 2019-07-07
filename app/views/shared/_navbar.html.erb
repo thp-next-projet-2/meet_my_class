@@ -1,92 +1,100 @@
-<!-- Topbar Start -->
-<div class="navbar-custom topnav-navbar">
-    <div class="container-fluid">
+<!-- Begin page -->
+<div class="wrapper">
 
-        <!-- LOGO -->
-        <%= link_to '#', class: 'topnav-logo' do %>
-            <%= image_tag "logo1.png", height: '41', width: '55' %>
-        <% end %>
+                    <!-- Topbar Start -->
+                    <div class="navbar-custom">
+                        <ul class="list-unstyled topbar-right-menu float-right mb-0">
 
-        <ul class="list-unstyled topbar-right-menu float-right mb-0">  
-            <li class="dropdown notification-list">
-            
-                <a class="nav-link dropdown-toggle nav-user arrow-none mr-0" data-toggle="dropdown" id="topbar-userdrop" href="#" role="button" aria-haspopup="true"
-                    aria-expanded="false">
-                    <span class="account-user-avatar"> 
-                        <i class="fas fa-user-shield fa-3x"></i>
-                    </span>
-                </a>
+                        <li class="dropdown notification-list">
+                            <a class="nav-link dropdown-toggle nav-user arrow-none mr-0" data-toggle="dropdown" id="topbar-userdrop" href="#" role="button" aria-haspopup="true"
+                                aria-expanded="false">
+                                <span class="account-user-avatar"> 
+                                    <i class="fas fa-user-shield fa-3x"></i>
+                                </span>
+                            </a>
 
-                <div class="dropdown-menu dropdown-menu-right dropdown-menu-animated topbar-dropdown-menu profile-dropdown" aria-labelledby="topbar-userdrop">
-                        <% if current_teacher %>
-                    <!-- Je suis un Prof -->
 
-                    <!-- item-->
-                    <div class=" dropdown-header noti-title">
-                        <h6 class="text-overflow m-0">Welcome !</h6>
+                            <div class="dropdown-menu dropdown-menu-right dropdown-menu-animated topbar-dropdown-menu profile-dropdown" aria-labelledby="topbar-userdrop">
+                                    <% if current_teacher %>
+                                <!-- Je suis un Prof -->
+
+                                <!-- item-->
+                                <div class=" dropdown-header noti-title">
+                                    <h6 class="text-overflow m-0">Welcome !</h6>
+                                </div>
+
+                                <!-- item-->
+                                <%= link_to 'My account ', edit_teacher_registration_path, class: "dropdown-item notify-item"%>
+
+                                <!-- item-->
+                                <%= link_to 'New class',  new_teachers_klass_path, class: "dropdown-item notify-item"%>
+
+                                <!-- item-->
+                                <%= link_to 'Logout', destroy_teacher_session_path, class: "dropdown-item notify-item"%>
+
+                                <% elsif current_student %>
+                                <!-- Je suis un Elève -->
+
+                                <!-- item-->
+                                <div class=" dropdown-header noti-title">
+                                    <h6 class="text-overflow m-0">Welcome !</h6>
+                                </div>
+
+                                <!-- item-->
+                                <%= link_to 'My account ', edit_student_registration_path, class: "dropdown-item notify-item"%>
+
+                                <!-- item-->
+                                <%= link_to 'Se my class',  root_path, class: "dropdown-item notify-item"%>
+
+                                <!-- item-->
+                                <%= link_to 'Logout', destroy_student_session_path, class: "dropdown-item notify-item"%>
+
+                                <%else%>
+
+                                <!-- Je suis un visiteur -->
+
+                                <!-- item-->
+                                <div class=" dropdown-header noti-title">
+                                    <h6 class="text-overflow m-0">Welcome !</h6>
+                                </div>
+                                <!-- item-->
+                                <%= link_to 'Sign in as teacher', new_teacher_session_path, class: "dropdown-item notify-item"%>
+                                
+                                <!-- item-->
+                                <%= link_to 'Sign up as teacher', new_teacher_registration_path, class: "dropdown-item notify-item"%>
+
+                                <!-- item-->
+                                <%= link_to 'Sign in as student', new_student_session_path, class: "dropdown-item notify-item"%>
+
+                                <!-- item-->
+                                <%= link_to 'Sign up as student', new_student_registration_path, class: "dropdown-item notify-item"%>
+
+                                <%end%>
+
+                            </div>
+                        </li>
+                    </ul>
+                    <!-- TODO : Search feature -->
+                    <button class="button-menu-mobile open-left disable-btn">
+                        <i class="fas fa-search"></i>
+                    </button>
+                    <div class="app-search">
+                        <form>
+                            <div class="input-group">
+                                <input type="text" class="form-control" placeholder="Search a class">
+                                <span class="fas fa-search"></span>
+                                <div class="input-group-append">
+                                    <button class="btn btn-primary" type="submit">Search</button>
+                                </div>
+                            </div>
+                        </form>
                     </div>
-
-                    <!-- item-->
-                    <%= link_to 'My account ', edit_teacher_registration_path, class: "dropdown-item notify-item"%>
-
-                    <!-- item-->
-                    <%= link_to 'New class',  new_teachers_klass_path, class: "dropdown-item notify-item"%>
-
-                    <!-- item-->
-                    <%= link_to 'Logout', destroy_teacher_session_path, class: "dropdown-item notify-item"%>
-
-                    <% elsif current_student %>
-                    <!-- Je suis un Elève -->
-
-                    <!-- item-->
-                    <div class=" dropdown-header noti-title">
-                        <h6 class="text-overflow m-0">Welcome !</h6>
-                    </div>
-
-                    <!-- item-->
-                    <%= link_to 'My account ', edit_student_registration_path, class: "dropdown-item notify-item"%>
-
-                    <!-- item-->
-                    <%= link_to 'Se my class',  root_path, class: "dropdown-item notify-item"%>
-
-                    <!-- item-->
-                    <%= link_to 'Logout', destroy_student_session_path, class: "dropdown-item notify-item"%>
-
-                    <%else%>
-
-                    <!-- Je suis un visiteur -->
-
-                    <!-- item-->
-                    <div class=" dropdown-header noti-title">
-                        <h6 class="text-overflow m-0">Welcome !</h6>
-                    </div>
-                    <!-- item-->
-                    <%= link_to 'Sign in as teacher', new_teacher_session_path, class: "dropdown-item notify-item"%>
-                    
-                    <!-- item-->
-                    <%= link_to 'Sign up as teacher', new_teacher_registration_path, class: "dropdown-item notify-item"%>
-
-                    <!-- item-->
-                    <%= link_to 'Sign in as student', new_student_session_path, class: "dropdown-item notify-item"%>
-
-                    <!-- item-->
-                    <%= link_to 'Sign up as student', new_student_registration_path, class: "dropdown-item notify-item"%>
-
-                    <%end%>
 
                 </div>
-            </li>
-
-        </ul>
-        <a class="navbar-toggle"  data-toggle="collapse" data-target="#topnav-menu-content">
-            <div class="lines">
-                <span></span>
-                <span></span>
-                <span></span>
+                <!-- / Topbar -->
             </div>
-        </a>
-    </div>
+            <!-- / content -->
+        </div>
+
 </div>
-<!-- end Topbar -->
-
-
+<!-- / wrapper -->

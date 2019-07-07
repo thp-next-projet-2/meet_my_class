@@ -13,26 +13,14 @@
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
     
-    <!-- App favicon -->
-    <link rel="shortcut icon" href="assets/images/images/favicon.ico">
 
   </head>
 
   <body>
-    <header>
-      <%# a Réactiver plus tard :) 
-      <%# <%= render 'shared/partials/left-sidebar' %>
-      <%# <%= render 'shared/partials/horizontal-nav' %> 
       <%= render 'shared/navbar' %>
       <%= render 'shared/flash' %>
-      <%= render 'shared/dev_bar' %>
-    </header>
-    <main>
+      
       <%= yield %>
-    </main>
-    <footer>
-      <%= render 'shared/footer' %>
-    </footer>
   </body>
 
 </html>
