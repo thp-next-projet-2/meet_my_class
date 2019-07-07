@@ -28,6 +28,7 @@ class Teacher < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   validates :email, uniqueness: { case_sensitive: false }
+  validates :first_name, :last_name, presence: true
 
   has_many :klasses, dependent: :destroy
 end
