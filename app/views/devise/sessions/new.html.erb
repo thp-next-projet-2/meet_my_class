@@ -1,21 +1,70 @@
-<h2>Log in</h2>
+<body class="authentication-bg">
 
-<%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="form-inputs">
-    <%= f.input :email,
-                required: false,
-                autofocus: true,
-                input_html: { autocomplete: "email" } %>
-    <%= f.input :password,
-                required: false,
-                input_html: { autocomplete: "current-password" } %>
-    <%= f.input :remember_me, as: :boolean if devise_mapping.rememberable? %>
-  </div>
+    <div class="account-pages mt-5 mb-5">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-5">
+                    <div class="card">
 
-  <div class="form-actions">
-    <%= f.button :submit, "Log in" %>
-  </div>
-<% end %>
+                    <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
 
-<%= render "devise/shared/links" %>
+                        <!-- Logo -->
+                        <div class="card-header pt-4 pb-4 text-center bg-primary">
+                            <span><%=image_tag("logo1.png", size: "50x38")%></span>
+                        </div>
 
+                        <div class="card-body p-4">
+                            
+                            <div class="text-center w-75 m-auto">
+                                <h4 class="text-dark-50 text-center mt-0 font-weight-bold">Sign In</h4>
+                                <p class="text-muted mb-4">Enter your email address and password to access admin panel.</p>
+                            </div>
+
+                            <form action="#">
+
+                                <div class="form-group">
+                                    <%= f.input :email,
+                                                required: false,
+                                                autofocus: true,
+                                                input_html: { autocomplete: "email" } %>
+                                </div>
+
+                                <div class="form-group">
+                                    <%= f.input :password,
+                                                required: false,
+                                                input_html: { autocomplete: "current-password" } %>
+                                </div>
+
+                                <div class="form-group mb-3">
+                                    <div class="custom-control custom-checkbox">
+                                    <%= f.input :remember_me, as: :boolean if devise_mapping.rememberable? %>
+                                    </div>
+                                </div>
+
+                                <div class="form-group mb-0 text-center">
+                                    <%= f.button :submit, "Log in", class: "btn btn-primary" %>
+                                </div>
+
+                            </form>
+                        </div> <!-- end card-body -->
+                        <% end %>
+
+                    </div>
+                    <!-- end card -->
+
+                    <div class="row mt-3">
+                        <div class="col-12 text-center">
+                            <p class="text-muted">Don't have an account? or Forgot your password? <a href="pages-register.html" class="text-muted ml-1"><b><%= render "devise/shared/links", class: "text-muted ml-1" %></b></a></p>
+                        </div> <!-- end col -->
+                    </div>
+                    <!-- end row -->
+
+                </div> <!-- end col -->
+            </div>
+            <!-- end row -->
+        </div>
+        <!-- end container -->
+    </div>
+    <!-- end page -->
+
+</body>
