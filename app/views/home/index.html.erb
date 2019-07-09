@@ -1,26 +1,93 @@
-<section class="container">
-  <div class="d-flex justify-content-center mt-5">
-    <h5 class="btn btn-success mr-2">This website is in contruction soory for the incovenience</h5>
-  </div>
-</section>
-<!-- ! This is temporary code -->
-<code>
-  <p>This should actually host a login form that redirects to the dashboard for users (now in v2:
-    students/teachers/both).</p>
+<!-- ============================================================== -->
+<!-- Start Page Content here -->
+<!-- ============================================================== -->
 
-    <% if current_teacher%>
-  <h2>Professeurs</h2>
-    <ul>
-        <%= link_to 'Espace de travail', teacher_path(current_teacher) %>
-    </ul>
-    <% end %>
+<div class="wrapper">
+
+    <div class="content">
+
+        <!-- Start Content-->
+        <div class="container-fluid">
+            
+            <!-- start page title -->
+            <div class="row">
+                <div class="col-12">
+                    <div class="page-title-box">
+                        <div class="page-title-right">
+                            <ol class="breadcrumb m-0">
+                                <li class="breadcrumb-item"><a href="javascript: void(0);">+</a></li>
+                                <li class="breadcrumb-item"><a href="javascript: void(0);">+</a></li>
+                                <li class="breadcrumb-item active">+</li>
+                            </ol>
+                        </div>
+                        <h4 class="page-title">Courses</h4>
+                    </div>
+                </div>
+            </div>     
+            <!-- end page title --> 
+
+            <div class="row mb-2">
+                <div class="col-sm-4">
+                      <%= link_to '<i class="fas fa-plus"></i> Create Class'.html_safe, new_teachers_klass_path, class: "btn btn-danger btn-rounded mb-3" %>
+                </div>
+            </div> 
+            <!-- end row-->
 
 
-    <% if current_student%>
-  <h2>Étudiants</h2>
-    <ul>
-      <%= link_to 'Temple du savoir', klasses_path %>
-    </ul>
-    <% end %>
-</code>
+            <div class="row">
+            <% @klasses.each do |k|%>
+                <div class="col-md-6 col-xl-3">
+                    <!-- project card -->
+                    <div class="card d-block">
+                        <div class="card-body">
+                            <div class="dropdown card-widgets">
+                                <% if current_teacher%>
+                                <a href="#" class="dropdown-toggle arrow-none" data-toggle="dropdown" aria-expanded="false">
+                                    <i class="fas fa-sort-down"></i>
+                                </a>
+                                <div class="dropdown-menu dropdown-menu-right">
+                                    <!-- item-->
+                                    <a href="javascript:void(0);" class="dropdown-item"><i class="fas fa-edit"></i>Edit</a>
+                                    <!-- item-->
+                                    <a href="javascript:void(0);" class="dropdown-item"><i class="fas fa-trash-alt"></i>Delete</a>
+                                </div>
+                                <% end %>
+                            </div>
+                            <!-- project title-->
+                            <h4 class="mt-0">
+                                <a href="apps-projects-details.html" class="text-title"><%= k.title%></a>
+                            </h4>
+                            <% if current_student %>
+                            <div class="badge badge-success mb-3">Finished</div>
+                            <% end %>
+                            <p class="text-muted font-13 mb-3"><%= k.description[0..100] %>... <a href="javascript:void(0);" class="font-weight-bold text-muted">view more</a>
+                            </p>
 
+                            <!-- project detail-->
+                            <p class="mb-1">
+                                <span class="pr-2 text-nowrap mb-2 d-inline-block">
+                                    <i class="fas fa-shoe-prints"></i>
+                                    <b><%= @steps.count%></b> Step of course
+                                </span>
+                                <span class="text-nowrap mb-2 d-inline-block">
+                                    <i class="fas fa-comments"></i>
+                                    <b><%= @questions.count %></b> Students questions
+                                </span>
+                            </p>
+                        </div> 
+                        <!-- end card-body-->
+                    </div> <!-- end card-->
+
+                </div> <!-- end col -->
+                <% end %>
+
+        </div> <!-- container -->
+
+    </div> <!-- content -->
+
+
+</div>
+
+<!-- ============================================================== -->
+<!-- End Page content -->
+<!-- ============================================================== -->

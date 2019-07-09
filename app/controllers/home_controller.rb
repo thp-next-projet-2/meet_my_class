@@ -5,5 +5,8 @@ class HomeController < ApplicationController
     # * TEMPORARY CODE *
     @teacher = Teacher.all
     @student = Student.all
+    @questions = Question.all
+    @klasses = Klass.all
+    @steps = Step.all
   end
 end
