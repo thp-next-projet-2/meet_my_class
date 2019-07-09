@@ -1,0 +1,86 @@
+
+<body class="authentication-bg">
+    <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+    <%= f.error_notification %>
+    <div class="account-pages mt-5 mb-5">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-5">
+                    <div class="card">
+                        <!-- Logo-->
+                        <div class="card-header pt-4 pb-4 text-center bg-primary">
+                            <a href="index.html">
+                                <span><%=image_tag("logo1.png", size: "50x38")%></span>
+                            </a>
+                        </div>
+
+                        <div class="card-body p-4">
+                            
+                            <div class="text-center w-75 m-auto">
+                                <h4 class="text-dark-50 text-center mt-0 font-weight-bold">Free Sign Up</h4>
+                                <p class="text-muted mb-4">Don't have an account? Create your account, it takes less than a minute </p>
+                            </div>
+
+                            <form action="#">
+
+                                <div class="form-group">
+                                        <%= f.input :first_name,class:"form-control", placeholder:"Prénom"%>
+                                </div>
+
+                                <div class="form-group">
+                                        <%= f.input :last_name,class:"form-control", placeholder:"Prénom"%>
+                                </div>
+
+                                <div class="form-group">
+                                    <%= f.input :email, required:true, autofocus: true, input_html: { autocomplete: "email" } ,class:"form-control", placeholder:"Email"%>
+                                </div>
+
+                                <div class="form-group">
+                                        <%= f.input :password, 
+                                        input_html: { autocomplete: "new-password" }, 
+                                        hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
+                                        class:"form-control", 
+                                        placeholder:"Mot de passe"%>
+                                </div>
+
+                                <div class="form-group">
+                                        <%= f.input :password_confirmation, 
+                                        input_html: { autocomplete: "new-password" }, 
+                                        class:"form-control", 
+                                        placeholder:"Confirmation mot de passe" %>
+                                </div>
+
+                                <%# <div class="form-group">
+                                    <div class="custom-control custom-checkbox">
+                                        <input type="checkbox" class="custom-control-input" id="checkbox-signup">
+                                        <label class="custom-control-label" for="checkbox-signup">I accept <a href="#" class="text-muted">Terms and Conditions</a></label>
+                                    </div>
+                                </div> %>
+
+                                <div class="form-group mb-0 text-center">
+                                    <%= f.button :submit, "Sign up", class: "btn btn-primary" %>
+                                </div>
+
+                            </form>
+                        </div> <!-- end card-body -->
+                    </div>
+                    <!-- end card -->
+
+                    <div class="row mt-3">
+                        <div class="col-12 text-center">
+                            <p class="text-muted">Already have account? <b><%= render "devise/shared/links", class:"text-muted ml-1" %></b></p>
+                        </div> <!-- end col-->
+                    </div>
+                    <!-- end row -->
+
+                </div> <!-- end col -->
+            </div>
+            <!-- end row -->
+        </div>
+        <!-- end container -->
+    </div>
+    <!-- end page -->
+    <% end %>
+
+</body>
+
