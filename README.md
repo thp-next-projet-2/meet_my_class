@@ -10,9 +10,7 @@
 
 
 
-## Cloning the repository
-
-* Clone the repository
+## Launch the repository
 
 * Husky :
   * cd in the directory and run `npm install`
