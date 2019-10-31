@@ -11,7 +11,7 @@ gem 'bootsnap', '>= 1.1.0', require: false
 gem 'bootstrap', '~> 4.3', '>= 4.3.1'
 gem 'bootstrap-sass'
 gem 'coffee-rails', '~> 4.2'
-gem 'devise', '~> 4.6.0'
+gem 'devise', '~> 4.7.1'
 gem 'devise-i18n', '~> 1.8'
 gem 'dotenv-rails', '~> 2.7.2'
 gem 'faker', '~> 1.8', '>= 1.8.7'
